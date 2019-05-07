@@ -8,6 +8,10 @@ from plotear import *
 def train(dataset_path):
 
     df = pd.read_csv(dataset_path)
+
+    if df.empty:
+        return ""
+
     df.columns = ["x", "y", "clase"]
 
     modelo = Arbol()
