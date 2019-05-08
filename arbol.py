@@ -18,6 +18,19 @@ class Arbol(object):
 			print(nodo.label, nodo.umbral)
 
 
+
+	def export(self, titulo, filename, size='8.5'):
+		f = Digraph(titulo, filename=filename)
+		f.attr(size=size)
+
+		raiz = self.raiz()
+
+		raiz.graficar(f)
+
+		f.view()
+
+		#return f
+
 class Nodo(object):
 
 	def __init__(self, label=None, parent=None, lc=None, rc=None, umbral=None, level=None):
@@ -32,24 +45,31 @@ class Nodo(object):
 
 	# retorna la sintaxis de pydot para un Nodo
 	def graficar(self, grafico):
-		
+
+		#caso base
+		print("caso base")
+		if self is None:
+			return
+
+		#caso general
+
+		print("caso general")
+
 		# graficar el nodo
-		grafico = grafico.attr('node', shape='circle')
-		
+		grafico.attr('node', shape='box')
+
 		# graficar las ramas con su etiqueta
-		nodo_actual 	= self.label + "_" + self.level
-		nodo_izquierdo 	= self.lc.label + "_" + self.lc.level
-		nodo_derecho 	= self.rc.label + "_" + self.rc.level
+		nodo_actual 	= self.label #+ "_" + str(self.level)
+		nodo_izquierdo 	= self.lc.label #+ "_" + str(self.lc.level)
+		nodo_derecho 	= self.rc.label #+ "_" + str(self.rc.level)
 
-		grafico = grafico.edge( nodo_actual, nodo_izquierdo, label=self.ll)
-		grafico = grafico.edge( nodo_actual, nodo_derecho, label=self.rl)
+		if nodo_izquierdo is not None:
+			grafico.edge(nodo_actual, nodo_izquierdo, "<=")
+			self.lc.graficar(grafico)
 
-
-		# grafico los hijos
-		self.lc.graficar(grafico)
-		self.rc.graficar(grafico)
-
-		return grafico
+		if nodo_derecho is not None:
+			grafico.edge(nodo_actual, nodo_derecho, ">")
+			self.rc.graficar(grafico)
 
 
 class Hoja(object):
@@ -64,16 +84,3 @@ class Hoja(object):
 	def graficar(self, grafico):
 		return grafico
 
-
-def exportar_a_pydot(arbol, titulo, filename, size='8.5'):
-	
-	f = Digraph(titulo, filename=filename)
-	f.attr(size=size)
-
-	# si no tiene padre es Nodo raiz, graficamos con doble círculo
-	#if self.parent == None 
-	#		grafico.attr('node', shape='doublecircle')
-
-	f = arbol.graficar(f)
-
-	f.view()

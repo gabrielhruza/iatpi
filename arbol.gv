@@ -1,0 +1,18 @@
+digraph "mi arbol" {
+	size=8.5
+	node [shape=box]
+	y -> x [label=">"]
+	node [shape=box]
+	x -> x [label="<="]
+	node [shape=box]
+	x -> y [label="<="]
+	node [shape=box]
+	x -> y [label=">"]
+	node [shape=box]
+	y -> y [label="<="]
+	node [shape=box]
+	y -> x [label=">"]
+	node [shape=box]
+	x -> x [label=">"]
+	node [shape=box]
+}

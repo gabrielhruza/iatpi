@@ -52,14 +52,11 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
 
     # CASO GENERAL
 
-    # calculo la maxima ganancia de informacion de x (hago de cuenta que no hay repetidos por ahora)
+    # calculo la maxima ganancia de informacion de x y de y(hago de cuenta que no hay repetidos por ahora)
     umbral_y_ganancia_x = max_ganancia(dataset, "x", max_gan)
-
-    # calculo la maxima ganancia de informacion de y (hago de cuenta que no hay repetidos por ahora)
     umbral_y_ganancia_y = max_ganancia(dataset, "y", max_gan)
 
-    # comparo entre ganancias de "x" y de "y"
-    if (umbral_y_ganancia_x[1] > umbral_y_ganancia_y[1]):
+    if (umbral_y_ganancia_x[1] > umbral_y_ganancia_y[1]): # comparo entre ganancias de "x" y de "y"
 
         atributo    = "x"
         umbral      = umbral_y_ganancia_x[0]

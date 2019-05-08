@@ -27,8 +27,9 @@ def plotear(dataset, arbol, titulo):
 
             plt.plot([piso_x,techo_x], [nodo.umbral,nodo.umbral])
 
-
     plt.title(titulo)
     plt.savefig(path)
+
+    arbol.export("mi arbol", "arbol.gv")
 
     return path
