@@ -45,8 +45,13 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
 
     if (len(fc.index) == 1): # si la longitud de "fc" == 1 es pq el dataset tiene elementos de una sola clase
 
-        hoja = Hoja(parent=nodo_resguardo.parent, clase=fc["clase"][0], cant=fc["cant"][0])
-        nodo_resguardo = hoja
+        #hoja = Hoja(parent=nodo_resguardo.parent, clase=fc["clase"][0], cant=fc["cant"][0])
+        #nodo_resguardo = hoja
+        #arbol.add(nodo_resguardo)
+        #print(nodo_resguardo.parent.lc.clase)
+        #print(nodo_resguardo.parent.rc.clase)
+        nodo_resguardo.clase    = clase=fc["clase"][0]
+        nodo_resguardo.cant     = cant=fc["cant"][0]
         arbol.add(nodo_resguardo)
         return
 

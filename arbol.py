@@ -42,9 +42,18 @@ class Nodo(object):
         self.rc 	= rc # right child => Nodo u Hoja
         self.umbral = umbral # umbral <= o >
         self.id 	= id # nivel para hacer unicas las etiqutes
+        self.clase  = None
+        self.cant   = None
 
     def graficar(self, grafico): # retorna la sintaxis de pydot para un Nodo
-        grafico.attr('node', shape='box')
+
+        if self.clase == 0:
+            grafico.attr('node', shape='proteasesite')
+        elif self.clase == 1:
+            grafico.attr('node', shape='proteinstab')
+        else:
+            grafico.attr('node', shape='box')
+
         grafico.node(str(self.id))
         if self.lc is not None:
             grafico.edge(str(self.id), str(self.lc.id), label='<=')
