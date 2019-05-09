@@ -1,4 +1,17 @@
 digraph "mi arbol" {
 	size=8.5
 	node [shape=box]
+	0
+	0 -> None [label="<="]
+	0 -> 2 [label=">"]
+	node [shape=circle]
+	1
+	node [shape=box]
+	2
+	2 -> None [label="<="]
+	2 -> None [label=">"]
+	node [shape=circle]
+	3
+	node [shape=circle]
+	4
 }

@@ -14,12 +14,16 @@ def train(dataset_path):
 
     df.columns = ["x", "y", "clase"]
 
-    modelo = Arbol()
-    nodo_resguardo = Nodo(level=0)
+    modelo=Arbol()
+    nodo_resguardo = Nodo(id=0)
 
     max_gan = 0.1
 
     decision_tree(df, modelo, nodo_resguardo, max_gan)
+
+    if modelo.raiz() is not None:
+        #modelo.asignar_id(modelo.raiz())
+        pass
 
     path_resultado = plotear(df, modelo, "Mi plot")
 
@@ -30,15 +34,10 @@ def train(dataset_path):
 def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
 
     # CASOS BASES
-    # el dataset tiene muy pocos elementos => 3 para este caso
-    #if len(dataset.index) < 3:
-     #   print("sali por dataset pequeño")
-     #   return ""
 
     # el dataset esta vacio
     if dataset.empty:
-        #print("sali por dataset vacio")
-        return ""
+        return
 
     # el dataset contiene solo valores de una sola clase
     # frecuencia cada clase en el dataset
@@ -48,9 +47,8 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
 
         hoja = Hoja(parent=nodo_resguardo.parent, clase=fc["clase"][0], cant=fc["cant"][0])
         nodo_resguardo = hoja
-
-        print("sali por todos la misma clase")
-        return ""
+        arbol.add(nodo_resguardo)
+        return
 
 
     # CASO GENERAL
@@ -152,8 +150,6 @@ def max_ganancia(dataset, atributo, max_gan):
 
         ganancia = entropia_dataset - (p1 * entropia_particion_1) - (p2 * entropia_particion_2)
 
-        print(sp_info)
-
         if sp_info == 0:
             gain_ratio = 0
         else:
@@ -170,8 +166,6 @@ def split_info(long_parte_1, long_parte_2, long_dataset):
 
     n1 = long_parte_1 / long_dataset
     n2 = long_parte_2 / long_dataset
-
-    print(long_dataset)
 
     try:
         t1 = (n1 * math.log(n1, 2))*(-1)
