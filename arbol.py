@@ -47,13 +47,13 @@ class Nodo(object):
 	def graficar(self, grafico):
 
 		#caso base
-		print("caso base")
+		#print("caso base")
 		if self is None:
 			return
 
 		#caso general
 
-		print("caso general")
+		#print("caso general")
 
 		# graficar el nodo
 		grafico.attr('node', shape='box')
@@ -74,12 +74,13 @@ class Nodo(object):
 
 class Hoja(object):
 	"""docstring for Hoja"""
-	def __init__(self, arg):
+	def __init__(self, parent = None, clase = None, cant = None):
 		super(Hoja, self).__init__()
 		
-		self.parent = None	# Nodo padre
-		self.clase  = None 	#
-	
+		self.parent 	= parent
+		self.clase  	= clase
+		self.cant 		= cant
+
 	# retorna la sintaxis de pydot para una Hoja
 	def graficar(self, grafico):
 		return grafico

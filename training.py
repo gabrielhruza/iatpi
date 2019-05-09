@@ -42,10 +42,13 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
 
     # el dataset contiene solo valores de una sola clase
     # frecuencia cada clase en el dataset
-    fc = dataset.groupby(["clase"]).count()
+    fc = dataset.groupby(["clase"]).size().reset_index(name='cant')
 
-    # si la longitud de "fc" == 1 es pq el dataset tiene elementos de una sola clase
-    if (len(fc.index) == 1):
+    if (len(fc.index) == 1): # si la longitud de "fc" == 1 es pq el dataset tiene elementos de una sola clase
+
+        hoja = Hoja(parent=nodo_resguardo.parent, clase=fc["clase"][0], cant=fc["cant"][0])
+        nodo_resguardo = hoja
+
         print("sali por todos la misma clase")
         return ""
 
@@ -56,7 +59,7 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
     umbral_y_ganancia_x = max_ganancia(dataset, "x", max_gan)
     umbral_y_ganancia_y = max_ganancia(dataset, "y", max_gan)
 
-    if (umbral_y_ganancia_x[1] > umbral_y_ganancia_y[1]): # comparo entre ganancias de "x" y de "y"
+    if (umbral_y_ganancia_x[1] >= umbral_y_ganancia_y[1]): # comparo entre ganancias de "x" y de "y"
 
         atributo    = "x"
         umbral      = umbral_y_ganancia_x[0]
@@ -77,12 +80,9 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
 
     nodo_resguardo.umbral = umbral
     nodo_resguardo.label = atributo
-    #nodo_resguardo.level = nodo_resguardo.level + 1
     nodo_resguardo.lc = left_node
     nodo_resguardo.rc = right_node
 
-    #arbol.add(left_node)
-    #arbol.add(right_node)
     arbol.add(nodo_resguardo)
 
     nodo_resguardo = left_node
@@ -104,6 +104,7 @@ def entropia(dataset):
     fc = dataset.groupby(["clase"]).count()
 
     # si la longitud de "fc" == 1 es pq el dataset tiene elementos de una sola clase
+    # por lo tanto entropia = 0
     if (len(fc.index) == 1):
         return entropia
 
