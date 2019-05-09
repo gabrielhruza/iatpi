@@ -30,6 +30,7 @@ def plotear(dataset, arbol, titulo):
     plt.title(titulo)
     plt.savefig(path)
 
-    arbol.export("mi arbol", "arbol.gv")
-
+    if arbol is not None:
+        arbol.export("mi arbol", "arbol.gv")
+        
     return path
