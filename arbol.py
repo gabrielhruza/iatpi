@@ -14,6 +14,11 @@ class Arbol(object):
     def long(self):
         return len(self.arbol)
 
+    def imprimir(self):
+        for item in self.arbol:
+            print(item.label, item.umbral, item.id)
+
+
     def asignar_id(self): # asignar id unico a cada nodo/hoja para poder dibujar despues
         id = self.raiz().id
         for item in self.arbol:
@@ -24,11 +29,10 @@ class Arbol(object):
     def export(self, titulo, filename, size='8.5'):
         f = Digraph(titulo, filename=filename)
         f.attr(size=size)
-        raiz = self.raiz()
-
-        for item in self.arbol:
-            item.graficar(f)
-
+        i = 0
+        while i<len(self.arbol):
+            self.arbol[i].graficar(f)
+            i+=1
         f.view()
 
 class Nodo(object):
@@ -44,21 +48,28 @@ class Nodo(object):
         self.id 	= id # nivel para hacer unicas las etiqutes
         self.clase  = None
         self.cant   = None
+        self.hoja   = False
 
     def graficar(self, grafico): # retorna la sintaxis de pydot para un Nodo
 
-        if self.clase == 0:
-            grafico.attr('node', shape='proteasesite')
-        elif self.clase == 1:
-            grafico.attr('node', shape='proteinstab')
+        if self.hoja:
+            shape = "proteinstab"
+            if self.clase == 0:
+                shape = "proteasesite"
+            grafico.attr('node', shape=shape)
+            grafico.node(str(self.id))
         else:
             grafico.attr('node', shape='box')
+            grafico.node(str(self.id))
+        return
 
-        grafico.node(str(self.id))
+    def graficar_edge(self, grafico):
         if self.lc is not None:
             grafico.edge(str(self.id), str(self.lc.id), label='<=')
         if self.rc is not None:
             grafico.edge(str(self.id), str(self.rc.id), label='>')
+        return
+
 
 class Hoja(object):
     """docstring for Hoja"""
