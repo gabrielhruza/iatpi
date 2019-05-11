@@ -27,8 +27,10 @@ def plotear(dataset, arbol, titulo):
 
     path = 'res/tree.svg'
 
-    colors = np.where(dataset['clase'] == 1, 'r', 'k') #clase 1 = rojo // clase0 = negro
-    dataset.plot(kind="scatter", x="x", y="y", s=20, c=colors)
+    colors = np.where(dataset['clase'] == 1, 'b', 'k') #clase 1 = azul // clase0 = negro
+    dataset.plot(kind="scatter", x="x", y="y", s=25, c=colors)
+    plt.legend(['Clase: 1'])
+    #plt.legend(['Clase: 1'], bbox_to_anchor=(1.04, 1), loc="upper left")
 
     max_x = dataset["x"].max()
     min_x  = 0
@@ -42,8 +44,7 @@ def plotear(dataset, arbol, titulo):
     plt.savefig(path)
 
     if arbol is not None:
-        arbol.asignar_id()
-        arbol.imprimir()
-        arbol.export("mi arbol", "arbol.gv")
+        arbol.asignar_id() #asigna id a cada nodo u hoja
+        arbol.export("mi arbol", "arbol.gv") #exporta la figura del arbol
 
     return path

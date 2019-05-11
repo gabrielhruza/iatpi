@@ -1,4 +1,4 @@
-from pydot import Digraph
+from graphviz import Digraph
 
 class Arbol(object):
 
