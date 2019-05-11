@@ -145,7 +145,7 @@ class Ui_MainWindow(object):
     def buscar_archivo(self):
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv );;All Files (*)")
         if fileName:
-            self.input_archivo.setText(fileName)
+            self.input_file.setText(fileName)
 
 if __name__ == "__main__":
     import sys

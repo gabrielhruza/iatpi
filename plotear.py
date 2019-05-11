@@ -1,38 +1,42 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvas
 import numpy as np
+
+def plot_linea(n, min_y, max_y, min_x, max_x):
+    if n.hoja:
+        return
+    else:
+        if n.label == "x":
+            plt.plot([n.umbral, n.umbral], [min_y, max_y])
+
+            #max_y = n.umbral
+            plot_linea(n.lc, min_y, max_y, min_x, max_x)  # voy por la izquierda
+            #min_y = n.umbral
+
+
+            plot_linea(n.rc, min_y, max_y, min_x, max_x)  # voy por la derecha
+
+        else:
+            plt.plot([min_x, max_x], [n.umbral, n.umbral])
+
+            #min_x=n.umbral
+            plot_linea(n.lc, min_y, max_y, min_x, max_x)  # voy por la izquierda
+            #max_x = n.umbral
+            plot_linea(n.rc, min_y, max_y, min_x, max_x)  # voy por la derecha
 
 def plotear(dataset, arbol, titulo):
 
-    path = 'res/tree.svg'
+    max_x = dataset["x"].max()
+    min_x  = 0
+    max_y = dataset["y"].max()
+    min_y  = 0
 
-    colors = np.where(dataset['clase'] == 1, 'r', 'k') #clase 1 = rojo // clase0 = negro
-    dataset.plot(kind="scatter", x="x", y="y", s=20, c=colors)
-
-    techo_x = dataset["x"].max()
-    piso_x  = 0
-    techo_y = dataset["y"].max()
-    piso_y  = 0
-    resg_label = "x"
-
-    #for nodo in arbol.arbol:
-
-        #if nodo.label == "x":
-         #   plt.plot([nodo.umbral,nodo.umbral],[piso_y,techo_y])
-
-        #else:
-            #if nodo.label != resg_label:
-                # actualizar techo
-             #   techo_x = nodo.parent.umbral
-
-         #   plt.plot([piso_x,techo_x], [nodo.umbral,nodo.umbral])
-
-    plt.title(titulo)
-    plt.savefig(path)
+    n = arbol.raiz()
+    plot_linea(n, min_y, max_y, min_x, max_x)
 
     if arbol is not None:
-        arbol.asignar_id()
-        arbol.export("mi arbol", "arbol.gv")
+        arbol.asignar_id() #asigna id a cada nodo u hoja
+        arbol.export("mi arbol", "arbol.gv") #exporta la figura del arbol
 
-
-    return path
+    return dataset

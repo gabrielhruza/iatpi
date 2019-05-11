@@ -1,8 +1,0 @@
-digraph finite_state_machine {
-	size=10
-	node [shape=doublecircle]
-	LR_0
-	node [shape=circle]
-	LR_0 -> LR_0 [label="SS(B)"]
-	LR_0 -> LR_1 [label="SS(S)"]
-}
