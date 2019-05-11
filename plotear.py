@@ -1,10 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvas
 import numpy as np
 
 def plot_linea(n, min_y, max_y, min_x, max_x):
     if n.hoja:
-        print("hoja")
         return
     else:
         if n.label == "x":
@@ -13,6 +13,8 @@ def plot_linea(n, min_y, max_y, min_x, max_x):
             #max_y = n.umbral
             plot_linea(n.lc, min_y, max_y, min_x, max_x)  # voy por la izquierda
             #min_y = n.umbral
+
+
             plot_linea(n.rc, min_y, max_y, min_x, max_x)  # voy por la derecha
 
         else:
@@ -29,8 +31,6 @@ def plotear(dataset, arbol, titulo):
 
     colors = np.where(dataset['clase'] == 1, 'b', 'k') #clase 1 = azul // clase0 = negro
     dataset.plot(kind="scatter", x="x", y="y", s=25, c=colors)
-    plt.legend(['Clase: 1'])
-    #plt.legend(['Clase: 1'], bbox_to_anchor=(1.04, 1), loc="upper left")
 
     max_x = dataset["x"].max()
     min_x  = 0
@@ -38,9 +38,9 @@ def plotear(dataset, arbol, titulo):
     min_y  = 0
 
     n = arbol.raiz()
+
     plot_linea(n, min_y, max_y, min_x, max_x)
 
-    plt.title(titulo)
     plt.savefig(path)
 
     if arbol is not None:
