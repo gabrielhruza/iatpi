@@ -27,24 +27,16 @@ def plot_linea(n, min_y, max_y, min_x, max_x):
 
 def plotear(dataset, arbol, titulo):
 
-    path = 'res/tree.svg'
-
-    colors = np.where(dataset['clase'] == 1, 'b', 'k') #clase 1 = azul // clase0 = negro
-    dataset.plot(kind="scatter", x="x", y="y", s=25, c=colors)
-
     max_x = dataset["x"].max()
     min_x  = 0
     max_y = dataset["y"].max()
     min_y  = 0
 
     n = arbol.raiz()
-
     plot_linea(n, min_y, max_y, min_x, max_x)
-
-    plt.savefig(path)
 
     if arbol is not None:
         arbol.asignar_id() #asigna id a cada nodo u hoja
         arbol.export("mi arbol", "arbol.gv") #exporta la figura del arbol
 
-    return path
+    return dataset

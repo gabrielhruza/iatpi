@@ -24,17 +24,21 @@ class MatplotlibWidget(QMainWindow):
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
-    def update_graph(self, figura):
+    def update_graph(self, dataset):
 
-        fig = plt.figure()
-
-        fig = FigureCanvas(fig)
-
-        self.MplWidget.canvas.show()
         self.MplWidget.canvas.axes.clear()
-        self.MplWidget.canvas.axes.plot([1,2,3,4,5],[3,4,5,6,7])
-        self.MplWidget.canvas.axes.legend(('cosinus', 'sinus'),loc='upper right')
-        self.MplWidget.canvas.axes.set_title('Cosinus - Sinus Signal')
+
+        ax = plt.gca()
+        for line in ax.lines:
+            self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata())
+
+        colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
+
+        x = dataset['x'].to_numpy()
+        y = dataset['y'].to_numpy()
+        self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
+
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos')
 
         self.MplWidget.canvas.draw()
 
@@ -45,15 +49,16 @@ class MatplotlibWidget(QMainWindow):
         if fileName:
             self.input_file.setText(fileName)
 
-
     def procesar_dataset(self):
         if self.input_file.text():
             dataset_path = self.input_file.text()
-            figura = train(dataset_path)
-            self.update_graph(figura)
+            dataset = train(dataset_path)
+            self.update_graph(dataset)
+            window.tabWidget.setCurrentIndex(1)
 
 
 app = QApplication([])
 window = MatplotlibWidget()
+window.tabWidget.setCurrentIndex(0)
 window.show()
 app.exec_()
