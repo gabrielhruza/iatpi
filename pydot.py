@@ -12,4 +12,4 @@ f.edge('LR_0', 'LR_0', label='SS(B)')
 f.edge('LR_0', 'LR_1', label='SS(S)')
 
 
-f.view()
+#f.view()

@@ -46,5 +46,4 @@ def plotear(dataset, arbol, titulo):
         arbol.imprimir()
         arbol.export("mi arbol", "arbol.gv")
 
-
     return path
