@@ -1,4 +1,5 @@
 from graphviz import Digraph
+import random
 
 class Arbol(object):
 
@@ -35,6 +36,13 @@ class Arbol(object):
             self.arbol[i].graficar(f)
             i+=1
         f.view()
+
+
+    def pred(self, reg):
+
+        clase = random.randint(0,1)
+
+        return clase
 
 class Nodo(object):
 
@@ -82,3 +90,5 @@ class Hoja(object):
     def graficar(self, grafico):
         grafico.attr('node', shape='circle')
         grafico.node(str(self.id))
+
+
