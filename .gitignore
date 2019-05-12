@@ -1,5 +1,7 @@
 *.pyc
 __pycache__/
+*.gv
+*.pdf
 
 # User-specific stuff
 .idea/**/workspace.xml

@@ -35,7 +35,7 @@ class MatplotlibWidget(QMainWindow):
         ax = plt.gca()
         for line in ax.lines:
             self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata())
-            
+
         colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
 
         x = dataset['x'].to_numpy()
