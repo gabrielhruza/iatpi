@@ -69,11 +69,12 @@ class MatplotlibWidget(QMainWindow):
             self.input_file_test.setText(fileName)
 
 
-    # disparar el proceso de entrenamiento
+    # disparar el proceso de entrenamiento y devuelve una lista con datos de las 3 tablas
     def test(self, modelo):
         if self.input_file_test.text():
-            dataset_path = self.input_file.text()
-            predicciones = test(dataset_path, modelo)
+            test_dataset_path = self.input_file_test.text()
+            predicciones = test(test_dataset_path, modelo)
+            print(predicciones)
 
 
 

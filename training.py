@@ -192,3 +192,26 @@ def particionar(dataset, atributo, umbral):
     particion[1] = dataset[dataset[atributo] > umbral]
 
     return particion
+
+
+def train_for_test(dataset_path):
+
+    df = pd.read_csv(dataset_path)
+
+    if df.empty:
+        return ""
+
+    df.columns = ["x", "y", "clase"]
+
+    modelo=Arbol()
+    nodo_resguardo = Nodo(id=0)
+
+    max_gan = 0.1
+
+    decision_tree(df, modelo, nodo_resguardo, max_gan)
+
+
+    if modelo:
+        return modelo
+
+    return False
