@@ -32,10 +32,12 @@ class MatplotlibWidget(QMainWindow):
         self.MplWidget.canvas.axes.clear()
         self.MplWidget.canvas.axes.clear()
 
+        ##plt.show()
+
         ax = plt.gca()
         for line in ax.lines:
             self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata())
-
+        ax = ""
         colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
 
         x = dataset['x'].to_numpy()
@@ -77,12 +79,13 @@ class MatplotlibWidget(QMainWindow):
             predicciones = test(test_dataset_path, modelo)
 
             rowPosition = self.corr_tableWidget.rowCount()  # añado cada item a la tabla correctos
-            for row in predicciones['correctos']:
-                self.corr_tableWidget.insertRow(rowPosition)
-                self.corr_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
-                self.corr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
-                self.corr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
-                rowPosition += 1
+            if len(predicciones['correctos']) > 0:
+                for row in predicciones['correctos']:
+                    self.corr_tableWidget.insertRow(rowPosition)
+                    self.corr_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
+                    self.corr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
+                    self.corr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+                    rowPosition += 1
 
             rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
             for row in predicciones['inciertos']:

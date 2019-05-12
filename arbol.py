@@ -17,7 +17,7 @@ class Arbol(object):
 
     def imprimir(self):
         for item in self.arbol:
-            print(item.label, item.umbral, item.id)
+            print(item.label, item.umbral, item.id, item.clase)
 
 
     def asignar_id(self): # asignar id unico a cada nodo/hoja para poder dibujar despues
@@ -39,10 +39,22 @@ class Arbol(object):
 
 
     def pred(self, reg):
-
-        clase = random.randint(0,1)
-
+        raiz = self.raiz()
+        clase = 99
+        clase = self.buscar(raiz, reg, clase)
         return clase
+
+
+    def buscar(self, nodo, reg, c):
+        while not nodo.hoja:
+            if reg[nodo.label] <= nodo.umbral:
+                nodo = nodo.lc
+            else:
+                nodo = nodo.rc
+
+        return nodo.clase
+
+
 
 class Nodo(object):
 

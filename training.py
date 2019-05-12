@@ -210,7 +210,6 @@ def train_for_test(dataset_path):
 
     decision_tree(df, modelo, nodo_resguardo, max_gan)
 
-
     if modelo:
         return modelo
 
