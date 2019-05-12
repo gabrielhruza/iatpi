@@ -30,6 +30,7 @@ class MatplotlibWidget(QMainWindow):
     def update_graph(self, dataset):
 
         self.MplWidget.canvas.axes.clear()
+        self.MplWidget.canvas.axes.clear()
 
         ax = plt.gca()
         for line in ax.lines:
@@ -69,37 +70,42 @@ class MatplotlibWidget(QMainWindow):
             self.input_file_test.setText(fileName)
 
 
-    # disparar el proceso de entrenamiento y devuelve una lista con datos de las 3 tablas
+    # disparar el proceso de testing y devuelve una lista con datos de las 3 tablas (incorrectas, correctas, incosistentes)
     def test(self, modelo):
         if self.input_file_test.text():
             test_dataset_path = self.input_file_test.text()
             predicciones = test(test_dataset_path, modelo)
-            print(predicciones)
+
+            rowPosition = self.corr_tableWidget.rowCount()  # añado cada item a la tabla correctos
+            for row in predicciones['correctos']:
+                self.corr_tableWidget.insertRow(rowPosition)
+                self.corr_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
+                self.corr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
+                self.corr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+                rowPosition += 1
+
+            rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
+            for row in predicciones['inciertos']:
+                self.nopred_tableWidget.insertRow(rowPosition)
+                self.nopred_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
+                self.nopred_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
+                self.nopred_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+                rowPosition += 1
+
+            rowPosition = self.incorr_tableWidget.rowCount() # añado cada item a la tabla incorrectos
+            for row in predicciones['incorrectos']:
+                self.incorr_tableWidget.insertRow(rowPosition)
+                self.incorr_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
+                self.incorr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
+                self.incorr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+                rowPosition += 1
 
 
 
-class TableView(QTableWidget):
-    def __init__(self, data, *args):
-        QTableWidget.__init__(self, *args)
-        self.data = data
-        self.setData()
-        self.resizeColumnsToContents()
-        self.resizeRowsToContents()
+            #self.corr_tableWidget
+            #self.nopred_tableWidget
 
-    def setData(self):
-        horHeaders = []
-        for n, key in enumerate(sorted(self.data.keys())):
-            horHeaders.append(key)
-            for m, item in enumerate(self.data[key]):
-                newitem = QTableWidgetItem(item)
-                self.setItem(m, n, newitem)
-        self.setHorizontalHeaderLabels(horHeaders)
 
-    def update_data(self, data):
-        self.data = data
-        self.setData()
-        #self.resizeColumnsToContents()
-        #self.resizeRowsToContents()
 
 
 app = QApplication([])

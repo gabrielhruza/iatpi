@@ -39,7 +39,6 @@ def deducir(modelo, registro):
 
 	if modelo.pred(registro):
 		clase = modelo.pred(registro)
-	print(clase)
 
 	return clase
 
