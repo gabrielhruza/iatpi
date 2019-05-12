@@ -32,12 +32,10 @@ class MatplotlibWidget(QMainWindow):
         self.MplWidget.canvas.axes.clear()
         self.MplWidget.canvas.axes.clear()
 
-        ##plt.show()
-
         ax = plt.gca()
         for line in ax.lines:
             self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata())
-        ax = ""
+            
         colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
 
         x = dataset['x'].to_numpy()
@@ -47,6 +45,7 @@ class MatplotlibWidget(QMainWindow):
         self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos')
 
         self.MplWidget.canvas.draw()
+        plt.close()
 
     # buscar archivo para training
     def buscar_archivo(self):
@@ -78,6 +77,15 @@ class MatplotlibWidget(QMainWindow):
             test_dataset_path = self.input_file_test.text()
             predicciones = test(test_dataset_path, modelo)
 
+            while (self.corr_tableWidget.rowCount() > 0):
+                    self.corr_tableWidget.removeRow(0);
+
+            while (self.nopred_tableWidget.rowCount() > 0):
+                    self.nopred_tableWidget.removeRow(0);
+
+            while (self.incorr_tableWidget.rowCount() > 0):
+                    self.incorr_tableWidget.removeRow(0);
+
             rowPosition = self.corr_tableWidget.rowCount()  # añado cada item a la tabla correctos
             if len(predicciones['correctos']) > 0:
                 for row in predicciones['correctos']:
@@ -102,11 +110,6 @@ class MatplotlibWidget(QMainWindow):
                 self.incorr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
                 self.incorr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
                 rowPosition += 1
-
-
-
-            #self.corr_tableWidget
-            #self.nopred_tableWidget
 
 
 
