@@ -109,6 +109,7 @@ class MatplotlibWidget(QMainWindow):
                 self.incorr_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
                 self.incorr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
                 self.incorr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+                self.incorr_tableWidget.setItem(rowPosition, 3, QTableWidgetItem(str(row['pred'])))
                 rowPosition += 1
 
 

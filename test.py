@@ -20,6 +20,8 @@ def test(test_dataset_path, modelo):
         elif pred == 99:
             predicciones['inciertos'].append(row)
         else:
+            # ver para colocar esta funcionalidad en otra parte (que devuelva row completo nomas)
+            row['pred'] = pred
             predicciones['incorrectos'].append(row)
 
     return predicciones

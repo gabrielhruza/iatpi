@@ -151,71 +151,164 @@
          </widget>
         </item>
         <item>
-         <widget class="QTableWidget" name="corr_tableWidget">
-          <column>
-           <property name="text">
-            <string>x</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>y</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>clase</string>
-           </property>
-          </column>
+         <widget class="QFrame" name="titulo_tabla">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+               <underline>false</underline>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: green</string>
+             </property>
+             <property name="text">
+              <string>Correctos</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: blue</string>
+             </property>
+             <property name="text">
+              <string>Inconsistentes</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label_3">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: red</string>
+             </property>
+             <property name="text">
+              <string>Incorrectos</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
-         <widget class="QTableWidget" name="nopred_tableWidget">
-          <column>
-           <property name="text">
-            <string>x</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>y</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>clase</string>
-           </property>
-          </column>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTableWidget" name="incorr_tableWidget">
-          <column>
-           <property name="text">
-            <string>x</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>y</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>clase</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>predicción</string>
-           </property>
-          </column>
+         <widget class="QFrame" name="frame">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QTableWidget" name="corr_tableWidget">
+             <column>
+              <property name="text">
+               <string>x</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>y</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>clase</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="nopred_tableWidget">
+             <column>
+              <property name="text">
+               <string>x</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>y</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>clase</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="incorr_tableWidget">
+             <column>
+              <property name="text">
+               <string>x</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>y</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>clase</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>predicción</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
          <widget class="QWidget" name="graficos_widget" native="true"/>
         </item>
        </layout>
+       <zorder>frame</zorder>
+       <zorder>groupBox_2</zorder>
+       <zorder>testear</zorder>
+       <zorder>graficos_widget</zorder>
+       <zorder>titulo_tabla</zorder>
       </widget>
      </widget>
     </item>

@@ -39,21 +39,25 @@ class Arbol(object):
 
 
     def pred(self, reg):
+
         raiz = self.raiz()
+
         clase = 99
         clase = self.buscar(raiz, reg, clase)
+
         return clase
 
 
     def buscar(self, nodo, reg, c):
         while not nodo.hoja:
+
             if reg[nodo.label] <= nodo.umbral:
                 nodo = nodo.lc
+
             else:
                 nodo = nodo.rc
 
         return nodo.clase
-
 
 
 class Nodo(object):
