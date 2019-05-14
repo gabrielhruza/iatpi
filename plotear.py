@@ -4,36 +4,27 @@ from matplotlib.backends.backend_qt5agg import FigureCanvas
 import numpy as np
 
 def plot_linea(n, min_y, max_y, min_x, max_x):
-    if n.hoja:
-        return
-    else:
-        if n.label == "x":
-            plt.plot([n.umbral, n.umbral], [min_y, max_y])
+    for nodo in n.arbol:
 
-            #max_y = n.umbral
-            plot_linea(n.lc, min_y, max_y, min_x, max_x)  # voy por la izquierda
-            #min_y = n.umbral
+        if not nodo.hoja:
 
+            if nodo.label == "x":
+                plt.plot([nodo.umbral, nodo.umbral], [min_y, max_y])
+                min_x = nodo.umbral
 
-            plot_linea(n.rc, min_y, max_y, min_x, max_x)  # voy por la derecha
-
-        else:
-            plt.plot([min_x, max_x], [n.umbral, n.umbral])
-
-            #min_x=n.umbral
-            plot_linea(n.lc, min_y, max_y, min_x, max_x)  # voy por la izquierda
-            #max_x = n.umbral
-            plot_linea(n.rc, min_y, max_y, min_x, max_x)  # voy por la derecha
+            else:
+                plt.plot([min_x, max_x], [nodo.umbral, nodo.umbral])
+                min_y = nodo.umbral
 
 def plotear(dataset, arbol, titulo):
 
     max_x = dataset["x"].max()
-    min_x  = 0
+    min_x = dataset["x"].min()
     max_y = dataset["y"].max()
-    min_y  = 0
+    min_y = dataset["y"].min()
 
     n = arbol.raiz()
-    plot_linea(n, min_y, max_y, min_x, max_x)
+    plot_linea(arbol, min_y, max_y, min_x, max_x)
 
     if arbol is not None:
         arbol.asignar_id() #asigna id a cada nodo u hoja
