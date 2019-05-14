@@ -62,7 +62,7 @@ class Arbol(object):
 
 class Nodo(object):
 
-    def __init__(self, label=None, parent=None, lc=None, rc=None, umbral=None, id=None):
+    def __init__(self, label=None, parent=None, lc=None, rc=None, umbral=None, id=None, ganancia = None):
         super(Nodo, self).__init__()
 
         self.label 	= label # etiqueta
@@ -70,6 +70,7 @@ class Nodo(object):
         self.lc 	= lc # left child => Nodo u Hoja
         self.rc 	= rc # right child => Nodo u Hoja
         self.umbral = umbral # umbral <= o >
+        self.ganancia = ganancia #gain ratio del nodo
         self.id 	= id # nivel para hacer unicas las etiqutes
         self.clase  = None
         self.cant   = None
@@ -78,9 +79,9 @@ class Nodo(object):
     def graficar(self, grafico): # retorna la sintaxis de pydot para un Nodo
 
         if self.hoja:
-            grafico.node(str(self.id), "clase: "+str(self.clase) + " cant: " + str(self.cant))
+            grafico.node(str(self.id), "clase: "+str(self.clase)+ "\ncant: " + str(self.cant) + "\ngain ratio: " + str(self.ganancia))
         else:
-            grafico.node(str(self.id) , self.label)
+            grafico.node(str(self.id) , self.label + "\n gain ratio: " + str(round(self.ganancia, 2)))
             self.graficar_edge(grafico)
         return
 

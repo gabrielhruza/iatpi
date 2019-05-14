@@ -40,10 +40,9 @@ class MatplotlibWidget(QMainWindow):
 
         x = dataset['x'].to_numpy()
         y = dataset['y'].to_numpy()
+
         self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
-
-        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos')
-
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:azul - 0:negro')
         self.MplWidget.canvas.draw()
         plt.close()
 

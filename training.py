@@ -17,7 +17,7 @@ def train(dataset_path):
     modelo=Arbol()
     nodo_resguardo = Nodo(id=0)
 
-    max_gan = 0.1
+    max_gan = 0.001
 
     decision_tree(df, modelo, nodo_resguardo, max_gan)
 
@@ -49,6 +49,7 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
         nodo_resguardo.label = ""
         nodo_resguardo.clase    = clase=fc["clase"][0]
         nodo_resguardo.cant     = cant=fc["cant"][0]
+        nodo_resguardo.ganancia = 0
         arbol.add(nodo_resguardo)
         return
 
@@ -78,10 +79,11 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
     left_node.parent = nodo_resguardo
     right_node.parent = nodo_resguardo
 
-    nodo_resguardo.umbral = umbral
-    nodo_resguardo.label = atributo
-    nodo_resguardo.lc = left_node
-    nodo_resguardo.rc = right_node
+    nodo_resguardo.umbral   = umbral
+    nodo_resguardo.label    = atributo
+    nodo_resguardo.ganancia = resg_gan
+    nodo_resguardo.lc       = left_node
+    nodo_resguardo.rc       = right_node
 
     arbol.add(nodo_resguardo)
 
