@@ -6,7 +6,7 @@ from plotear import *
 # toma un dataset y devuelve el modelo (arbol)
 def train(dataset_path):
 
-    df = pd.read_csv(dataset_path)
+    df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'])
 
     if df.empty:
         return ""
@@ -197,7 +197,7 @@ def particionar(dataset, atributo, umbral):
 
 def train_for_test(dataset_path):
 
-    df = pd.read_csv(dataset_path)
+    df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'])
 
     if df.empty:
         return ""
@@ -218,8 +218,6 @@ def train_for_test(dataset_path):
 
 
 def tratar_inicio(dataset, keep):
-
-    dataset.columns = ['x', 'y', 'clase'] #agrego las cabeceras al dataframe
 
     dataset = dataset.drop_duplicates(subset=['x', 'y'], keep=keep) #elimino los duplicados y mantengo el que me pasan por (keep = {'first', 'last', False})
 
