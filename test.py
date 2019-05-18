@@ -26,12 +26,6 @@ def test(test_dataset_path, modelo):
 
     return predicciones
 
-# toma como parametros el modelo y el dataset de prueba => retorna la prediccion
-#def predecir(model, test_data):
-#	prediccion = pd.DataFrame()
-#	return prediccion
-
-
 # toma un registro de un dataset sin clase y un modelo => retorna la clase deducida
 def deducir(modelo, registro):
 

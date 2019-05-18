@@ -1,17 +1,7 @@
 digraph "mi arbol" {
 	size=8.5
 	node [shape=box]
-	0 [label=x]
-	0 -> 1 [headlabel="<= 90" labelangle=60 labeldistance=2.8]
-	0 -> 2 [label=">90"]
-	1 [label="clase: 0 cant: 3"]
-	2 [label=x]
-	2 -> 3 [headlabel="<= 158" labelangle=60 labeldistance=2.8]
-	2 -> 4 [label=">158"]
-	3 [label="clase: 1 cant: 4"]
-	4 [label=x]
-	4 -> 5 [headlabel="<= 163" labelangle=60 labeldistance=2.8]
-	4 -> 6 [label=">163"]
-	5 [label="clase: 0 cant: 1"]
-	6 [label="clase: 1 cant: 1"]
+	0 [label="clase: 1
+cant: 1
+gain ratio: 0"]
 }

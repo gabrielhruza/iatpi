@@ -1,4 +1,3 @@
-import pandas as pd
 import math
 
 from arbol import *
@@ -12,7 +11,7 @@ def train(dataset_path):
     if df.empty:
         return ""
 
-    df.columns = ["x", "y", "clase"]
+    df = tratar_inicio(df, 'first')
 
     modelo=Arbol()
     nodo_resguardo = Nodo(id=0)
@@ -203,12 +202,12 @@ def train_for_test(dataset_path):
     if df.empty:
         return ""
 
-    df.columns = ["x", "y", "clase"]
+    df = tratar_inicio(df, 'first')
 
     modelo=Arbol()
     nodo_resguardo = Nodo(id=0)
 
-    max_gan = 0.1
+    max_gan = 0.01
 
     decision_tree(df, modelo, nodo_resguardo, max_gan)
 
@@ -216,3 +215,12 @@ def train_for_test(dataset_path):
         return modelo
 
     return False
+
+
+def tratar_inicio(dataset, keep):
+
+    dataset.columns = ['x', 'y', 'clase'] #agrego las cabeceras al dataframe
+
+    dataset = dataset.drop_duplicates(subset=['x', 'y'], keep=keep) #elimino los duplicados y mantengo el que me pasan por (keep = {'first', 'last', False})
+
+    return dataset

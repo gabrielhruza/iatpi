@@ -1,5 +1,4 @@
 from graphviz import Digraph
-import random
 
 class Arbol(object):
 

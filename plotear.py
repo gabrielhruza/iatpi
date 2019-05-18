@@ -16,6 +16,7 @@ def plot_linea(n, min_y, max_y, min_x, max_x):
                 plt.plot([min_x, max_x], [nodo.umbral, nodo.umbral])
                 min_y = nodo.umbral
 
+
 def plotear(dataset, arbol, titulo):
 
     max_x = dataset["x"].max()

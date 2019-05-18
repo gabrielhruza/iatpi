@@ -6,7 +6,6 @@ from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from training import *
 from test import *
-#from matplotlib.backends.backend_qt5agg import FigureCanvas
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
 
 from matplotlib.figure import Figure
