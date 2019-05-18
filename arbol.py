@@ -67,10 +67,10 @@ class Arbol(object):
 
         with open(path, 'wb') as filehandle:
             # store the data as binary data stream
-            return  pickle.dump(self.arbol, filehandle)
+            return  pickle.dump(self, filehandle)
 
 
-    def import_file(path): # importo el arbol desde un archivo "ver excepciones"
+    def import_file(self, path): # importo el arbol desde un archivo "ver excepciones"
 
         # read the data as binary data stream
         with open(path, 'rb') as filehandle:

@@ -1,10 +1,14 @@
 import pandas as pd
 from training import train_for_test
 
+from arbol import *
+
 def test(test_dataset_path, modelo):
     predicciones = { 'correctos': [], 'inciertos': [], 'incorrectos': [] }
 
-    modelo = train_for_test('datasets/condavid.csv')
+    modelo = Arbol()
+    modelo = modelo.import_file('modelos/18-05-2019193218.data')
+
     df = pd.read_csv(test_dataset_path)
 
     if df.empty:
