@@ -3,11 +3,11 @@ from training import train_for_test
 
 from arbol import *
 
-def test(test_dataset_path, modelo):
+def test(test_dataset_path, model_path):
     predicciones = { 'correctos': [], 'inciertos': [], 'incorrectos': [] }
 
     modelo = Arbol()
-    modelo = modelo.import_file('modelos/18-05-2019193218.data')
+    modelo = modelo.import_file(model_path)
 
     df = pd.read_csv(test_dataset_path)
 

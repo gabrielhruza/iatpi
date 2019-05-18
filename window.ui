@@ -123,15 +123,99 @@
           <property name="title">
            <string>Seleccionar datos de test</string>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QLineEdit" name="input_file_test"/>
+            <widget class="QWidget" name="widget" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QWidget" name="widget_punto" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>X:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="punto_x"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>Y:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="punto_y">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_6">
+                   <property name="text">
+                    <string>ó Seleccione dataset (csv):</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="input_file_test"/>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="examinar_test">
+                   <property name="text">
+                    <string>Examinar</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="examinar_test">
-             <property name="text">
-              <string>Examinar</string>
+            <widget class="QWidget" name="file_dataset_test" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
              </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Seleccione modelo:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="input_file_model"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="examinar_modelo">
+                <property name="text">
+                 <string>Examinar</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -196,7 +280,7 @@
               <string notr="true">color: blue</string>
              </property>
              <property name="text">
-              <string>Inconsistentes</string>
+              <string>Sin predecir</string>
              </property>
             </widget>
            </item>

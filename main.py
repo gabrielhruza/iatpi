@@ -4,11 +4,10 @@
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
-from training import *
-from test import *
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
 
-from matplotlib.figure import Figure
+from training import *
+from test import *
 
 class MatplotlibWidget(QMainWindow):
 
@@ -22,6 +21,7 @@ class MatplotlibWidget(QMainWindow):
         self.crear_modelo.clicked.connect(self.procesar_dataset) #boton para disparar el training
         self.examinar.clicked.connect(self.buscar_archivo) #boton para buscar el dataset de training
         self.examinar_test.clicked.connect(self.buscar_archivo_test) #boton para buscar el dataset de test
+        self.examinar_modelo.clicked.connect(self.buscar_modelo) #boton para buscar el modelo ".data"
         self.testear.clicked.connect(self.test)  # boton para disparar el testeo
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
@@ -61,6 +61,14 @@ class MatplotlibWidget(QMainWindow):
             window.tabWidget.setCurrentIndex(1)
 
 
+    # buscar archivo de modelo
+    def buscar_modelo(self):
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
+
+        if fileName:
+            self.input_file_model.setText(fileName)
+
+
     # buscar archivo para testing
     def buscar_archivo_test(self):
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv );;All Files (*)")
@@ -70,10 +78,11 @@ class MatplotlibWidget(QMainWindow):
 
 
     # disparar el proceso de testing y devuelve una lista con datos de las 3 tablas (incorrectas, correctas, incosistentes)
-    def test(self, modelo):
-        if self.input_file_test.text():
-            test_dataset_path = self.input_file_test.text()
-            predicciones = test(test_dataset_path, modelo)
+    def test(self):
+        if self.input_file_test.text() and self.input_file_model.text():
+            test_dataset_path   = self.input_file_test.text()
+            model_path          = self.input_file_model.text()
+            predicciones = test(test_dataset_path, model_path)
 
             while (self.corr_tableWidget.rowCount() > 0):
                     self.corr_tableWidget.removeRow(0);
