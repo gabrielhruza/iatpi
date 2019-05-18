@@ -3,6 +3,7 @@ import math
 from arbol import *
 from plotear import *
 
+
 # toma un dataset y devuelve el modelo (arbol)
 def train(dataset_path):
 
@@ -20,13 +21,12 @@ def train(dataset_path):
 
     decision_tree(df, modelo, nodo_resguardo, max_gan)
 
-    if modelo.raiz() is not None:
-        #modelo.asignar_id(modelo.raiz())
-        pass
+    if modelo: #exportar el modelo a archivo .data
+        path_modelo = modelo.export_file()
 
-    path_resultado = plotear(df, modelo, "Mi plot")
+    path_plot = plotear(df, modelo, "Mi plot")
 
-    return path_resultado
+    return path_plot
 
 
 # basado en el algoritmo c4.5
@@ -222,3 +222,5 @@ def tratar_inicio(dataset, keep):
     dataset = dataset.drop_duplicates(subset=['x', 'y'], keep=keep) #elimino los duplicados y mantengo el que me pasan por (keep = {'first', 'last', False})
 
     return dataset
+
+

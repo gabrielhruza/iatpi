@@ -1,4 +1,6 @@
 from graphviz import Digraph
+import time
+import pickle
 
 class Arbol(object):
 
@@ -57,6 +59,22 @@ class Arbol(object):
                 nodo = nodo.rc
 
         return nodo.clase
+
+
+    def export_file(self):  # exporto el arbol hacia un archivo .data "ver excepciones"
+
+        path = 'modelos/' + time.strftime("%d-%m-%Y%H%M%S") + '.data'
+
+        with open(path, 'wb') as filehandle:
+            # store the data as binary data stream
+            return  pickle.dump(self.arbol, filehandle)
+
+
+    def import_file(path): # importo el arbol desde un archivo "ver excepciones"
+
+        # read the data as binary data stream
+        with open(path, 'rb') as filehandle:
+            return pickle.load(filehandle)
 
 
 class Nodo(object):
