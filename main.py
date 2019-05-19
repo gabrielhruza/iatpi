@@ -22,7 +22,9 @@ class MatplotlibWidget(QMainWindow):
         self.examinar.clicked.connect(self.buscar_archivo) #boton para buscar el dataset de training
         self.examinar_test.clicked.connect(self.buscar_archivo_test) #boton para buscar el dataset de test
         self.examinar_modelo.clicked.connect(self.buscar_modelo) #boton para buscar el modelo ".data"
+        self.examinar_pred_punto.clicked.connect(self.buscar_modelo_punto)  # boton para buscar el modelo ".data" en "Predecir punto"
         self.testear.clicked.connect(self.test)  # boton para disparar el testeo
+        self.predecir.clicked.connect(self.predecir_punto)  # boton para disparar la prediccion de un punto
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
@@ -67,6 +69,14 @@ class MatplotlibWidget(QMainWindow):
 
         if fileName:
             self.input_file_model.setText(fileName)
+
+
+    # buscar archivo de modelo en "predecir punto"
+    def buscar_modelo_punto(self):
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
+
+        if fileName:
+            self.input_file_model_punto.setText(fileName)
 
 
     # buscar archivo para testing
@@ -119,7 +129,26 @@ class MatplotlibWidget(QMainWindow):
                 self.incorr_tableWidget.setItem(rowPosition, 3, QTableWidgetItem(str(row['pred'])))
                 rowPosition += 1
 
+        return
 
+
+    def predecir_punto(self):
+        if self.input_punto_x.text() and self.input_punto_y.text() and self.input_file_model_punto.text():
+
+            x = self.input_punto_x.text()
+            y = self.input_punto_y.text()
+            punto = {'x':float(x.replace(',','.')), 'y':float(y.replace(',','.'))}
+
+            print(punto)
+
+            path_modelo = self.input_file_model_punto.text()
+
+            clase = test_punto(path_modelo, punto)
+
+            if clase is not None:
+                self.resultado_clase.display(clase)
+
+        return
 
 
 app = QApplication([])

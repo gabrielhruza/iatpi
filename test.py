@@ -18,6 +18,7 @@ def test(test_dataset_path, model_path):
 
     #tenemos el modelo y el dataset de prueba, ahora vamos a retornar las predicciones
     for index, row in df.iterrows():
+
         pred = deducir(modelo, row)
         if pred == row['clase']:
             predicciones['correctos'].append(row)
@@ -30,7 +31,15 @@ def test(test_dataset_path, model_path):
 
     return predicciones
 
-# toma un registro de un dataset sin clase y un modelo => retorna la clase deducida
+def test_punto(path_modelo, punto):
+
+    modelo = Arbol()
+    modelo = modelo.import_file(path_modelo)
+
+    return deducir(modelo, punto)
+
+
+# toma un registro (punto XY) de un dataset sin clase y un modelo => retorna la clase deducida
 def deducir(modelo, registro):
 
     clase = 99

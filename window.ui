@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -115,7 +115,7 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>Realizar Test</string>
+        <string>Testear dataset</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -134,56 +134,20 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <item>
-               <widget class="QWidget" name="widget_punto" native="true">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Seleccione dataset (csv):</string>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                 <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string>X:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="punto_x"/>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_5">
-                   <property name="text">
-                    <string>Y:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="punto_y">
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_6">
-                   <property name="text">
-                    <string>ó Seleccione dataset (csv):</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="input_file_test"/>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="examinar_test">
-                   <property name="text">
-                    <string>Examinar</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="input_file_test"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="examinar_test">
+                <property name="text">
+                 <string>Examinar</string>
+                </property>
                </widget>
               </item>
              </layout>
@@ -201,7 +165,7 @@
               <item>
                <widget class="QLabel" name="label_7">
                 <property name="text">
-                 <string>Seleccione modelo:</string>
+                 <string>Seleccione modelo (data):</string>
                 </property>
                </widget>
               </item>
@@ -393,6 +357,151 @@
        <zorder>testear</zorder>
        <zorder>graficos_widget</zorder>
        <zorder>titulo_tabla</zorder>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Predecir en un punto</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QWidget" name="widget_2" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>200</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="title">
+              <string>Ingrese punto X e Y para predecir la clase</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QWidget" name="widget_5" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <item>
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>Seleccione modelo (data):</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="input_file_model_punto"/>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="examinar_pred_punto">
+                   <property name="text">
+                    <string>Examinar</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_4" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="maximumSize">
+                    <size>
+                     <width>20</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>X:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="input_punto_x">
+                   <property name="showGroupSeparator" stdset="0">
+                    <bool>true</bool>
+                   </property>
+                   <property name="minimum">
+                    <double>-99999.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>99999.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="maximumSize">
+                    <size>
+                     <width>20</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Y:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="input_punto_y">
+                   <property name="showGroupSeparator" stdset="0">
+                    <bool>true</bool>
+                   </property>
+                   <property name="minimum">
+                    <double>-99999.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>99999.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="predecir">
+                   <property name="text">
+                    <string>Predecir</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_8">
+                   <property name="text">
+                    <string>Clase: </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLCDNumber" name="resultado_clase">
+                   <property name="intValue" stdset="0">
+                    <number>99</number>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_3" native="true"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
