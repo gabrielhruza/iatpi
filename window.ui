@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -431,7 +431,7 @@
                  <item>
                   <widget class="QDoubleSpinBox" name="input_punto_x">
                    <property name="showGroupSeparator" stdset="0">
-                    <bool>true</bool>
+                    <bool>false</bool>
                    </property>
                    <property name="minimum">
                     <double>-99999.000000000000000</double>
@@ -457,7 +457,7 @@
                  <item>
                   <widget class="QDoubleSpinBox" name="input_punto_y">
                    <property name="showGroupSeparator" stdset="0">
-                    <bool>true</bool>
+                    <bool>false</bool>
                    </property>
                    <property name="minimum">
                     <double>-99999.000000000000000</double>
