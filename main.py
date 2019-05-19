@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
+from PyQt5.QtCore import Qt
+from PyQt5.Qt import QCursor
 
 from training import *
 from test import *
@@ -58,12 +60,12 @@ class MatplotlibWidget(QMainWindow):
     def procesar_dataset(self):
         if self.input_file.text():
             dataset_path = self.input_file.text()
+            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             dataset = train(dataset_path)
+            QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
             self.update_graph(dataset)
-            window.tabWidget.setCurrentIndex(1)
 
-
-    # buscar archivo de modelo
+            # buscar archivo de modelo
     def buscar_modelo(self):
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
 
