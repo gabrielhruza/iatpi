@@ -48,7 +48,7 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
         nodo_resguardo.label = ""
         nodo_resguardo.clase    = clase=fc["clase"][0]
         nodo_resguardo.cant     = cant=fc["cant"][0]
-        nodo_resguardo.ganancia = 0
+        nodo_resguardo.ganancia = 1
         arbol.add(nodo_resguardo)
         return
 
