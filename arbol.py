@@ -31,7 +31,7 @@ class Arbol(object):
     def export(self, titulo, filename, size='8.5'):
         f = Digraph(titulo, filename=filename)
         f.attr(size=size)
-        f.attr('node', shape='box')
+        f.attr('node', shape='record', style='rounded')
         i = 0
         while i<len(self.arbol):
             self.arbol[i].graficar(f)
@@ -96,9 +96,9 @@ class Nodo(object):
     def graficar(self, grafico): # retorna la sintaxis de pydot para un Nodo
 
         if self.hoja:
-            grafico.node(str(self.id), "clase: "+str(self.clase)+ "\ncant: " + str(self.cant) + "\ngain ratio: " + str(self.ganancia))
+            grafico.node(str(self.id), label="{clase: "+str(self.clase)+ "| Cant: " + str(self.cant) + "\\n Gain Ratio: " + str(self.ganancia)+"}")
         else:
-            grafico.node(str(self.id) , self.label + "\n gain ratio: " + str(round(self.ganancia, 2)))
+            grafico.node(str(self.id) , label="{"+ self.label + "| Gain Ratio: " + str(round(self.ganancia, 2))+"}")
             self.graficar_edge(grafico)
         return
 
