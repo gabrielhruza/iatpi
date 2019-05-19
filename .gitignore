@@ -2,6 +2,8 @@
 __pycache__/
 *.gv
 *.pdf
+*.data
+
 
 # User-specific stuff
 .idea/**/workspace.xml
