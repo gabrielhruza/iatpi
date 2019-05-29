@@ -37,7 +37,9 @@ class MatplotlibWidget(QMainWindow):
 
         ax = plt.gca()
         for line in ax.lines:
-            self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata())
+            self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata(), color="orange")
+            self.MplWidget.canvas.axes.set_xlabel('X')
+            self.MplWidget.canvas.axes.set_ylabel('Y')
 
         colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
 
@@ -45,7 +47,8 @@ class MatplotlibWidget(QMainWindow):
         y = dataset['y'].to_numpy()
 
         self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
-        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:azul - 0:negro')
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:AZUL - 0:NEGRO')
+
         self.MplWidget.canvas.draw()
         plt.close()
 
@@ -60,9 +63,9 @@ class MatplotlibWidget(QMainWindow):
     def procesar_dataset(self):
         if self.input_file.text():
             dataset_path = self.input_file.text()
-            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+            #QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             dataset = train(dataset_path)
-            QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
+            #QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
             self.update_graph(dataset)
 
             # buscar archivo de modelo

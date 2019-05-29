@@ -88,7 +88,7 @@ class Nodo(object):
         self.rc 	= rc # right child => Nodo u Hoja
         self.umbral = umbral # umbral <= o >
         self.ganancia = ganancia #gain ratio del nodo
-        self.id 	= id # nivel para hacer unicas las etiqutes
+        self.id 	= id # nivel para hacer unicas las etiqutas del graphviz
         self.clase  = None
         self.cant   = None
         self.hoja   = False
