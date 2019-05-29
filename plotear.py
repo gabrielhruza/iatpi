@@ -24,10 +24,10 @@ def plot_linea_rec(n, min_y, max_y, min_x, max_x):
         min_y_resg = min_y
 
         if n.label == "x":
-            plt.plot([n.umbral, n.umbral], [min_y, max_y], color="blue")
+            plt.plot([n.umbral, n.umbral], [min_y, max_y])
             min_x = n.umbral
         else:
-            plt.plot([min_x, max_x], [n.umbral, n.umbral], color="blue")
+            plt.plot([min_x, max_x], [n.umbral, n.umbral])
             min_y = n.umbral
 
         plot_linea_rec(n.rc, min_y, max_y, min_x, max_x) #voy por la izquierda

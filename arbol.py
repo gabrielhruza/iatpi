@@ -96,9 +96,9 @@ class Nodo(object):
     def graficar(self, grafico): # retorna la sintaxis de pydot para un Nodo
 
         if self.hoja:
-            grafico.node(str(self.id), label="{Clase: "+str(self.clase)+ "| Cant: " + str(self.cant) + "\\n Gain Ratio: " + str(self.ganancia)+"}")
+            grafico.node(str(self.id), label="{Clase: "+str(self.clase)+ "| Cant: " + str(self.cant) + "\\n Gain Ratio: " + str(self.ganancia)+"}", color="green")
         else:
-            grafico.node(str(self.id) , label="{"+ self.label + "| Gain Ratio: " + str(round(self.ganancia, 2))+"}")
+            grafico.node(str(self.id) , label="{"+ self.label.upper() + "| Gain Ratio: " + str(round(self.ganancia, 2))+"}")
             self.graficar_edge(grafico)
         return
 
@@ -108,21 +108,4 @@ class Nodo(object):
         if self.rc is not None:
             grafico.edge(str(self.id), str(self.rc.id), label='>' + str(self.umbral))
         return
-
-
-#class Hoja(object):
-    #    """docstring for Hoja"""
-    #def __init__(self, parent = None, clase = None, cant = None, id=None):
-        #    super(Hoja, self).__init__()
-
-        #self.parent 	= parent
-        #self.clase  	= clase
-        #        self.cant 		= cant
-        #self.id			= id
-
-    # retorna la sintaxis de pydot para una Hoja
-    #def graficar(self, grafico):
-        #   grafico.attr('node', shape='circle')
-        #grafico.node(str(self.id))
-
 
