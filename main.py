@@ -92,7 +92,7 @@ class MatplotlibWidget(QMainWindow):
             self.input_file_test.setText(fileName)
 
 
-    # disparar el proceso de testing y devuelve una lista con datos de las 3 tablas (incorrectas, correctas, incosistentes)
+    # disparar el proceso de testing y devuelve una lista con datos de las 2 tablas (incorrectas, correctas)
     def test(self):
         if self.input_file_test.text() and self.input_file_model.text():
             test_dataset_path   = self.input_file_test.text()
@@ -102,8 +102,8 @@ class MatplotlibWidget(QMainWindow):
             while (self.corr_tableWidget.rowCount() > 0):
                     self.corr_tableWidget.removeRow(0);
 
-            while (self.nopred_tableWidget.rowCount() > 0):
-                    self.nopred_tableWidget.removeRow(0);
+            #while (self.nopred_tableWidget.rowCount() > 0):
+             #       self.nopred_tableWidget.removeRow(0);
 
             while (self.incorr_tableWidget.rowCount() > 0):
                     self.incorr_tableWidget.removeRow(0);
@@ -117,13 +117,13 @@ class MatplotlibWidget(QMainWindow):
                     self.corr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
                     rowPosition += 1
 
-            rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
-            for row in predicciones['inciertos']:
-                self.nopred_tableWidget.insertRow(rowPosition)
-                self.nopred_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
-                self.nopred_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
-                self.nopred_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
-                rowPosition += 1
+            #rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
+            #for row in predicciones['inciertos']:
+             #   self.nopred_tableWidget.insertRow(rowPosition)
+             #   self.nopred_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
+             #   self.nopred_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
+             #   self.nopred_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+             #   rowPosition += 1
 
             rowPosition = self.incorr_tableWidget.rowCount() # añado cada item a la tabla incorrectos
             for row in predicciones['incorrectos']:

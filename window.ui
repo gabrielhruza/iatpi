@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -227,23 +227,6 @@
             </widget>
            </item>
            <item alignment="Qt::AlignHCenter">
-            <widget class="QLabel" name="label_2">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: blue</string>
-             </property>
-             <property name="text">
-              <string>Sin predecir</string>
-             </property>
-            </widget>
-           </item>
-           <item alignment="Qt::AlignHCenter">
             <widget class="QLabel" name="label_3">
              <property name="font">
               <font>
@@ -280,25 +263,6 @@
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
             <widget class="QTableWidget" name="corr_tableWidget">
-             <column>
-              <property name="text">
-               <string>x</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>y</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>clase</string>
-              </property>
-             </column>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTableWidget" name="nopred_tableWidget">
              <column>
               <property name="text">
                <string>x</string>
