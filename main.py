@@ -54,7 +54,7 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo para training
     def buscar_archivo(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
 
         if fileName:
             self.input_file.setText(fileName)
@@ -63,14 +63,14 @@ class MatplotlibWidget(QMainWindow):
     def procesar_dataset(self):
         if self.input_file.text():
             dataset_path = self.input_file.text()
-            #QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             dataset = train(dataset_path)
-            #QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
             self.update_graph(dataset)
+            QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
 
             # buscar archivo de modelo
     def buscar_modelo(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
 
         if fileName:
             self.input_file_model.setText(fileName)
@@ -78,7 +78,7 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo de modelo en "predecir punto"
     def buscar_modelo_punto(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
 
         if fileName:
             self.input_file_model_punto.setText(fileName)
@@ -86,7 +86,7 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo para testing
     def buscar_archivo_test(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
 
         if fileName:
             self.input_file_test.setText(fileName)
