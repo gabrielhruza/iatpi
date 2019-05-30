@@ -104,8 +104,8 @@ class Nodo(object):
 
     def graficar_edge(self, grafico):
         if self.lc is not None:
-            grafico.edge(str(self.id), str(self.lc.id), headlabel='<= ' + str(self.umbral), labelangle='60', labeldistance='2.8')
+            grafico.edge(str(self.id), str(self.lc.id), headlabel='<= ' + str(round(self.umbral,2)), labelangle='60', labeldistance='2.8')
         if self.rc is not None:
-            grafico.edge(str(self.id), str(self.rc.id), label='>' + str(self.umbral))
+            grafico.edge(str(self.id), str(self.rc.id), label='>' + str(round(self.umbral,2)))
         return
 

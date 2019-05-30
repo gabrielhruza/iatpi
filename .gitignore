@@ -3,7 +3,7 @@ __pycache__/
 *.gv
 *.pdf
 *.data
-
+*.csv
 
 # User-specific stuff
 .idea/**/workspace.xml
