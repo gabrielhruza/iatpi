@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -84,10 +84,44 @@
             </widget>
            </item>
            <item alignment="Qt::AlignHCenter">
-            <widget class="QPushButton" name="crear_modelo">
-             <property name="text">
-              <string>Crear modelo</string>
+            <widget class="QWidget" name="widget_7" native="true">
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>16777215</height>
+              </size>
              </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QPushButton" name="crear_modelo">
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Crear modelo</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="ver_arbol">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Ver Árbol</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -209,7 +243,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <item alignment="Qt::AlignHCenter">
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="label_correctos">
              <property name="font">
               <font>
                <pointsize>10</pointsize>
@@ -227,7 +261,7 @@
             </widget>
            </item>
            <item alignment="Qt::AlignHCenter">
-            <widget class="QLabel" name="label_3">
+            <widget class="QLabel" name="label_incorrectos">
              <property name="font">
               <font>
                <pointsize>10</pointsize>
@@ -479,8 +513,39 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionTutorial"/>
+    <addaction name="separator"/>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionTutorial">
+   <property name="text">
+    <string>Instrucciones de uso</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="text">
+    <string>Acerca de </string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
