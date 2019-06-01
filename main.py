@@ -5,11 +5,11 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
-from PyQt5.QtCore import Qt
-from PyQt5.Qt import QCursor
 
 from training import *
 from test import *
+
+import webbrowser
 
 class MatplotlibWidget(QMainWindow):
 
@@ -22,6 +22,7 @@ class MatplotlibWidget(QMainWindow):
 
         self.crear_modelo.clicked.connect(self.procesar_dataset) #boton para disparar el training
         self.examinar.clicked.connect(self.buscar_archivo) #boton para buscar el dataset de training
+        self.ver_arbol.clicked.connect(self.verArbol)  # boton para "ver arbol"
         self.examinar_test.clicked.connect(self.buscar_archivo_test) #boton para buscar el dataset de test
         self.examinar_modelo.clicked.connect(self.buscar_modelo) #boton para buscar el modelo ".data"
         self.examinar_pred_punto.clicked.connect(self.buscar_modelo_punto)  # boton para buscar el modelo ".data" en "Predecir punto"
@@ -31,6 +32,9 @@ class MatplotlibWidget(QMainWindow):
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
     def update_graph(self, dataset):
+
+        if dataset.empty:
+            return
 
         self.MplWidget.canvas.axes.clear()
         self.MplWidget.canvas.axes.clear()
@@ -52,6 +56,7 @@ class MatplotlibWidget(QMainWindow):
         self.MplWidget.canvas.draw()
         plt.close()
 
+
     # buscar archivo para training
     def buscar_archivo(self):
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
@@ -62,13 +67,14 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
+            self.ver_arbol.setDisabled(True)
             dataset_path = self.input_file.text()
-            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             dataset = train(dataset_path)
             self.update_graph(dataset)
-            QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
+            self.ver_arbol.setEnabled(True)
 
-            # buscar archivo de modelo
+
+    # buscar archivo de modelo .DATA
     def buscar_modelo(self):
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
 
@@ -144,14 +150,18 @@ class MatplotlibWidget(QMainWindow):
             y = self.input_punto_y.text()
             punto = {'x':float(x.replace(',','.')), 'y':float(y.replace(',','.'))}
 
-            print(punto)
-
             path_modelo = self.input_file_model_punto.text()
 
             clase = test_punto(path_modelo, punto)
 
             if clase is not None:
                 self.resultado_clase.display(clase)
+
+        return
+
+    def verArbol(self):
+
+        webbrowser.open('http://google.co.kr', new=2)
 
         return
 

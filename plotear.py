@@ -54,8 +54,8 @@ def plotear(dataset, arbol, titulo):
     n = arbol.raiz()
     plot_linea_rec(n, min_y, max_y, min_x, max_x)
 
-    if arbol is not None:
-        arbol.asignar_id() #asigna id a cada nodo u hoja
-        arbol.export("mi arbol", "arbol.gv") #exporta la figura del arbol
+    #if arbol is not None:
+     #   arbol.asignar_id() #asigna id a cada nodo u hoja
+     #   arbol.export("mi arbol", "arboles/arbol.gv") #exporta la figura del arbol
 
     return dataset

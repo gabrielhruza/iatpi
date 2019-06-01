@@ -29,14 +29,21 @@ class Arbol(object):
                 id += 1
 
     def export(self, titulo, filename, size='8.5'):
-        f = Digraph(titulo, filename=filename)
+
+        self.asignar_id()
+
+        f = Digraph(titulo, filename=filename, format="dot")
         f.attr(size=size)
         f.attr('node', shape='record', style='rounded')
         i = 0
         while i<len(self.arbol):
             self.arbol[i].graficar(f)
             i+=1
-        f.view()
+        #f.view() C:\Program Files (x86)\Graphviz2.38\bin;C:\Program Files (x86)\Graphviz2.38\bin\dot.exe
+        try:
+            f.render()
+        except:
+            pass
 
 
     def pred(self, reg):
