@@ -1,7 +1,0 @@
-digraph "mi arbol" {
-	size=8.5
-	node [shape=box]
-	0 [label="clase: 1
-cant: 1
-gain ratio: 0"]
-}

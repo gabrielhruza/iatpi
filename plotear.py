@@ -30,7 +30,7 @@ def plot_linea_rec(n, min_y, max_y, min_x, max_x):
             plt.plot([min_x, max_x], [n.umbral, n.umbral])
             min_y = n.umbral
 
-        plot_linea_rec(n.rc, min_y, max_y, min_x, max_x)
+        plot_linea_rec(n.rc, min_y, max_y, min_x, max_x) #voy por la izquierda
 
         min_x = min_x_resg
         min_y = min_y_resg
@@ -39,7 +39,7 @@ def plot_linea_rec(n, min_y, max_y, min_x, max_x):
             max_x = n.umbral
         else:
             max_y = n.umbral
-        plot_linea_rec(n.lc, min_y, max_y, min_x, max_x)
+        plot_linea_rec(n.lc, min_y, max_y, min_x, max_x) #voy por la derecha
 
     else:
         return
@@ -56,6 +56,6 @@ def plotear(dataset, arbol, titulo):
 
     if arbol is not None:
         arbol.asignar_id() #asigna id a cada nodo u hoja
-        arbol.export("mi arbol", "arbol.gv") #exporta la figura del arbol
+        arbol.export("mi arbol", "arbol") #exporta la figura del arbol
 
     return dataset

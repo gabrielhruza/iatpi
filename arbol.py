@@ -29,14 +29,20 @@ class Arbol(object):
                 id += 1
 
     def export(self, titulo, filename, size='8.5'):
-        f = Digraph(titulo, filename=filename)
+
+        self.asignar_id()
+
+        f = Digraph(titulo, filename=filename, format="pdf")
         f.attr(size=size)
         f.attr('node', shape='record', style='rounded')
         i = 0
         while i<len(self.arbol):
             self.arbol[i].graficar(f)
             i+=1
-        f.view()
+        try:
+            f.render()
+        except:
+            pass
 
 
     def pred(self, reg):
@@ -88,7 +94,7 @@ class Nodo(object):
         self.rc 	= rc # right child => Nodo u Hoja
         self.umbral = umbral # umbral <= o >
         self.ganancia = ganancia #gain ratio del nodo
-        self.id 	= id # nivel para hacer unicas las etiqutes
+        self.id 	= id # nivel para hacer unicas las etiqutas del graphviz
         self.clase  = None
         self.cant   = None
         self.hoja   = False
@@ -96,33 +102,16 @@ class Nodo(object):
     def graficar(self, grafico): # retorna la sintaxis de pydot para un Nodo
 
         if self.hoja:
-            grafico.node(str(self.id), label="{Clase: "+str(self.clase)+ "| Cant: " + str(self.cant) + "\\n Gain Ratio: " + str(self.ganancia)+"}")
+            grafico.node(str(self.id), label="{Clase: "+str(self.clase)+ "| Cant: " + str(self.cant) + "\\n Gain Ratio: " + str(self.ganancia)+"}", color="green")
         else:
-            grafico.node(str(self.id) , label="{"+ self.label + "| Gain Ratio: " + str(round(self.ganancia, 2))+"}")
+            grafico.node(str(self.id) , label="{"+ self.label.upper() + "| Gain Ratio: " + str(round(self.ganancia, 2))+"}")
             self.graficar_edge(grafico)
         return
 
     def graficar_edge(self, grafico):
         if self.lc is not None:
-            grafico.edge(str(self.id), str(self.lc.id), headlabel='<= ' + str(self.umbral), labelangle='60', labeldistance='2.8')
+            grafico.edge(str(self.id), str(self.lc.id), headlabel='<= ' + str(round(self.umbral,2)), labelangle='60', labeldistance='2.8')
         if self.rc is not None:
-            grafico.edge(str(self.id), str(self.rc.id), label='>' + str(self.umbral))
+            grafico.edge(str(self.id), str(self.rc.id), label='>' + str(round(self.umbral,2)))
         return
-
-
-#class Hoja(object):
-    #    """docstring for Hoja"""
-    #def __init__(self, parent = None, clase = None, cant = None, id=None):
-        #    super(Hoja, self).__init__()
-
-        #self.parent 	= parent
-        #self.clase  	= clase
-        #        self.cant 		= cant
-        #self.id			= id
-
-    # retorna la sintaxis de pydot para una Hoja
-    #def graficar(self, grafico):
-        #   grafico.attr('node', shape='circle')
-        #grafico.node(str(self.id))
-
 

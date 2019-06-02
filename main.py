@@ -5,11 +5,13 @@ from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from matplotlib.backends.backend_qt5agg import (NavigationToolbar2QT as NavigationToolbar)
-from PyQt5.QtCore import Qt
-from PyQt5.Qt import QCursor
 
 from training import *
 from test import *
+
+import webbrowser
+import os
+
 
 class MatplotlibWidget(QMainWindow):
 
@@ -22,6 +24,7 @@ class MatplotlibWidget(QMainWindow):
 
         self.crear_modelo.clicked.connect(self.procesar_dataset) #boton para disparar el training
         self.examinar.clicked.connect(self.buscar_archivo) #boton para buscar el dataset de training
+        self.ver_arbol.clicked.connect(self.verArbol)  # boton para "ver arbol"
         self.examinar_test.clicked.connect(self.buscar_archivo_test) #boton para buscar el dataset de test
         self.examinar_modelo.clicked.connect(self.buscar_modelo) #boton para buscar el modelo ".data"
         self.examinar_pred_punto.clicked.connect(self.buscar_modelo_punto)  # boton para buscar el modelo ".data" en "Predecir punto"
@@ -32,12 +35,17 @@ class MatplotlibWidget(QMainWindow):
 
     def update_graph(self, dataset):
 
+        if dataset.empty:
+            return
+
         self.MplWidget.canvas.axes.clear()
         self.MplWidget.canvas.axes.clear()
 
         ax = plt.gca()
         for line in ax.lines:
-            self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata())
+            self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata(), color="orange")
+            self.MplWidget.canvas.axes.set_xlabel('X')
+            self.MplWidget.canvas.axes.set_ylabel('Y')
 
         colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
 
@@ -45,13 +53,15 @@ class MatplotlibWidget(QMainWindow):
         y = dataset['y'].to_numpy()
 
         self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
-        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:azul - 0:negro')
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:AZUL - 0:NEGRO')
+
         self.MplWidget.canvas.draw()
         plt.close()
 
+
     # buscar archivo para training
     def buscar_archivo(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
 
         if fileName:
             self.input_file.setText(fileName)
@@ -59,15 +69,16 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
+            self.ver_arbol.setDisabled(True)
             dataset_path = self.input_file.text()
-            QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
             dataset = train(dataset_path)
-            QApplication.setOverrideCursor(QCursor(Qt.ArrowCursor))
             self.update_graph(dataset)
+            self.ver_arbol.setEnabled(True)
 
-            # buscar archivo de modelo
+
+    # buscar archivo de modelo .DATA
     def buscar_modelo(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
 
         if fileName:
             self.input_file_model.setText(fileName)
@@ -75,7 +86,7 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo de modelo en "predecir punto"
     def buscar_modelo_punto(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione Modelo", "", "DATA Files (*.data );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
 
         if fileName:
             self.input_file_model_punto.setText(fileName)
@@ -83,13 +94,13 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo para testing
     def buscar_archivo_test(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv );;All Files (*)")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
 
         if fileName:
             self.input_file_test.setText(fileName)
 
 
-    # disparar el proceso de testing y devuelve una lista con datos de las 3 tablas (incorrectas, correctas, incosistentes)
+    # disparar el proceso de testing y devuelve una lista con datos de las 2 tablas (incorrectas, correctas)
     def test(self):
         if self.input_file_test.text() and self.input_file_model.text():
             test_dataset_path   = self.input_file_test.text()
@@ -99,8 +110,8 @@ class MatplotlibWidget(QMainWindow):
             while (self.corr_tableWidget.rowCount() > 0):
                     self.corr_tableWidget.removeRow(0);
 
-            while (self.nopred_tableWidget.rowCount() > 0):
-                    self.nopred_tableWidget.removeRow(0);
+            #while (self.nopred_tableWidget.rowCount() > 0):
+             #       self.nopred_tableWidget.removeRow(0);
 
             while (self.incorr_tableWidget.rowCount() > 0):
                     self.incorr_tableWidget.removeRow(0);
@@ -114,13 +125,13 @@ class MatplotlibWidget(QMainWindow):
                     self.corr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
                     rowPosition += 1
 
-            rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
-            for row in predicciones['inciertos']:
-                self.nopred_tableWidget.insertRow(rowPosition)
-                self.nopred_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
-                self.nopred_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
-                self.nopred_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
-                rowPosition += 1
+            #rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
+            #for row in predicciones['inciertos']:
+             #   self.nopred_tableWidget.insertRow(rowPosition)
+             #   self.nopred_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
+             #   self.nopred_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
+             #   self.nopred_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
+             #   rowPosition += 1
 
             rowPosition = self.incorr_tableWidget.rowCount() # añado cada item a la tabla incorrectos
             for row in predicciones['incorrectos']:
@@ -141,8 +152,6 @@ class MatplotlibWidget(QMainWindow):
             y = self.input_punto_y.text()
             punto = {'x':float(x.replace(',','.')), 'y':float(y.replace(',','.'))}
 
-            print(punto)
-
             path_modelo = self.input_file_model_punto.text()
 
             clase = test_punto(path_modelo, punto)
@@ -151,6 +160,12 @@ class MatplotlibWidget(QMainWindow):
                 self.resultado_clase.display(clase)
 
         return
+
+    def verArbol(self):
+        try:
+            os.startfile("arbol.pdf")
+        except:
+            pass
 
 
 app = QApplication([])

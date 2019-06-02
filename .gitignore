@@ -2,8 +2,9 @@
 __pycache__/
 *.gv
 *.pdf
-*.data
-
+modelos\*.data
+modelos/*.data
+*.csv
 
 # User-specific stuff
 .idea/**/workspace.xml

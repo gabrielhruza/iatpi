@@ -9,12 +9,10 @@ def test(test_dataset_path, model_path):
     modelo = Arbol()
     modelo = modelo.import_file(model_path)
 
-    df = pd.read_csv(test_dataset_path)
+    df = pd.read_csv(test_dataset_path, names=['x', 'y', 'clase'])
 
     if df.empty:
         return ""
-
-    df.columns = ["x", "y", "clase"]
 
     #tenemos el modelo y el dataset de prueba, ahora vamos a retornar las predicciones
     for index, row in df.iterrows():
