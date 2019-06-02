@@ -11,9 +11,7 @@ from test import *
 
 import webbrowser
 import os
-import pylab 
 
-import time
 
 class MatplotlibWidget(QMainWindow):
 
@@ -35,15 +33,15 @@ class MatplotlibWidget(QMainWindow):
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
-    def update_graph(self, dataset, t1):
-        
+    def update_graph(self, dataset):
+
         if dataset.empty:
             return
 
         self.MplWidget.canvas.axes.clear()
+        self.MplWidget.canvas.axes.clear()
 
         ax = plt.gca()
-
         for line in ax.lines:
             self.MplWidget.canvas.axes.plot(line.get_xdata(), line.get_ydata(), color="orange")
             self.MplWidget.canvas.axes.set_xlabel('X')
@@ -53,16 +51,11 @@ class MatplotlibWidget(QMainWindow):
 
         x = dataset['x'].to_numpy()
         y = dataset['y'].to_numpy()
-        
-        titulo = time.clock() - t1
-                
 
-        colores = 'Clase 0: Azul - Clase 1: Negro'
         self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
-        self.MplWidget.canvas.axes.set_title('Tiempo: {1} seg | {0} '.format(colores, round(titulo, 2)))
-        
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:AZUL - 0:NEGRO')
+
         self.MplWidget.canvas.draw()
-        
         plt.close()
 
 
@@ -78,9 +71,8 @@ class MatplotlibWidget(QMainWindow):
         if self.input_file.text():
             self.ver_arbol.setDisabled(True)
             dataset_path = self.input_file.text()
-            t1 = time.clock()
             dataset = train(dataset_path)
-            self.update_graph(dataset, t1)
+            self.update_graph(dataset)
             self.ver_arbol.setEnabled(True)
 
 
