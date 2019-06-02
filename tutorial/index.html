@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Instrucciones de Uso</title>
+<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
+<body>
+<div class="wrapper">
+<nav>
+  	<div class="pull-left">
+    	<h1><a href="javascript:"><img src="img/utn.ico" alt="" /> <span>Inteligencia Artificial 2019 - UTN FRRe</span></a></h1>
+    </div>
+</nav>
+<header>
+  <div class="container">
+    <h2 class="lone-header">Instrucciones de Uso C4.5 - AC</h2>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <ul class="docs-nav">
+      <li><strong>Inicio Rapido</strong></li>
+      <li><a href="#bienvenido" class="cc-active">Bienvenido</a></li>
+      <li><a href="#dependencias" class="cc-active">Dependencias</a></li>
+      <li><a href="#requisitos" class="cc-active">Mínimos Requisitos</a></li>
+      <li class="separator"></li>
+      <li><strong>Generar Modelo:</strong></li>
+      <li><a href="#paso1" class="cc-active">Paso 1</a></li>
+      <li><a href="#paso2" class="cc-active">Paso 2</a></li>
+      <li><a href="#paso3" class="cc-active">Paso 3</a></li>
+      <li><strong>Testear Modelo:</strong></li>
+      <li><a href="#tpaso1" class="cc-active">Paso 1</a></li>
+      <li><a href="#tpaso2" class="cc-active">Paso 2</a></li>
+      <li><a href="#tpaso3" class="cc-active">Paso 3</a></li>
+      <li><strong>Testear Punto:</strong></li>
+      <li><a href="#tppaso1" class="cc-active">Paso 1</a></li>
+      <li><a href="#tppaso2" class="cc-active">Paso 2</a></li>
+
+      <li><strong>Resultados interesantes:</strong></li>
+    </ul>
+    
+    <div class="docs-content">
+      <h2> Inicio Rapido</h2>
+      <h3 id="bienvenido"> Bienvenido</h3>
+      <p> Acerca de C4.5 - AC </p>
+      
+      <p> C4.5 - AC es una aplicación que permite crear árboles de decisión binarios a partir de una dataset de entrenamiento. Una vez generado el modelo, a través del ingreso de un dataset de test ó un punto, permite observar los resultados del testeo del modelo.</p>
+
+      <p>Está desarrollado por Alumnos del 5to Nivel de Ingeniería en Sistemas de Información de la Universidad Tecnológica Nacional, para la materia de Inteligencia Artificial. </p>
+
+      <p>Autores:</p>
+      <ul>
+        <li>GARCÍA AKIYAMA Jorge Horacio ()</li>
+        <li>GRINBERG David  ()</li>
+        <li>HRUZA Gabriel Carlos ()</li>
+      </ul>
+      <p>Docentes a cargo:</p>
+      <ul>
+        <li>Dr. Marcelo Karanik</li>
+        <li>Ing. Jorge Roa</li>
+      </ul>
+      <h3 id="dependencias"> Dependencias</h3>
+      <p>C4.5 - AC esta desarrollado con Tecnologias OpenSource. Se utilizo Python en su version 3.7. Ademas se utilizaron:</p>
+      <ul>
+        <li>PyQT5: para la generacion de la interfaz grafica de Usuario.</li>
+        <li>Pyinstaller: para la generacion de ejecutables y gestión de dependencias.</li>
+        <li>Matplotlib: para representar en los ejes cartesianos los puntos del dataset de entrenamiento.</li>
+        <li>Pandas: para utilizar la estructura Dataframe.</li>
+        <li>Graphviz: para la representación del árbol binario generado.</li>
+      </ul>
+      <h3 id="requisitos"> Mínimos Requisitos </h3>
+      <p> C4.5 - AC requiere:</p>
+      <ul>
+        <li>Sistemas Operativo Windows 7 en adelante.</li>
+      </ul>
+    
+
+      <hr>
+      <h2>Tutorial</h2>
+
+      <h3 id="paso1"> Paso 1: Generar modelo</h3>
+      <ul>
+        <li>Pantalla Inicial</li>
+      </ul>
+      <p>Antes de comenzar deberá contar con 2 archivos csv, uno para el entrenamiento y el otro, para el testeo posterior del modelo generado.</p>
+      <img src="img/1_pantalla_inicial.png" />
+     
+      <p>En la figura se muestra la pantalla de inicio de c4.5 - AC.</p>
+      <p>Para comenzar a utilizar la aplicación deberá cargar un dataset de entrenamiento, haciendo click en el botón <i>"Examinar"</i></p>
+
+      <blockquote>Nota: El dataset de entrenamiento deberá ser un archivo csv con 3 (tres) números separados por coma:
+      <ul>
+      <li>El primer número corresponde a la variable<i>"X"</i>: de tipo Real</li>
+      <li>El segundo número corresponde a la variable<i>"Y"</i>: de tipo Real</li>
+      <li>El tercer número corresponde a la variable<i>"CLASE"</i>: 0 ó 1</li>
+      </ul>
+
+      <u>Aclaración:</u> Esta nota es importante ya que de lo contrario no se consideran excepciones.
+      </blockquote>
+
+      <h3 id="paso2"> Paso 2: Seleccionar dataset.</h3>
+      <p>Una vez cargado el dataset inicial se debe clickear sobre el botón Crear Modelo para obtener los primeros resultados.</p>
+      <img src="img/3_crear_modelo.png" />
+
+      <p>El resultado de la clasificación del dataset de entrada será visible en el gráfico.</p>
+      
+      <h3 id="paso3"> Paso 3: Ver árbol.</h3>
+      <p>Luego de generada la clasificación se podrá observar el árbol generado seleccionando la opción Ver Árbol.</p>
+
+      <img src="img/4_ver_arbol.png" />
+      <img src="img/5_arbol_generado.png" style="width:100%; height:20em;" />
+      
+      <hr>
+      <h2>Testear Modelo</h2>
+
+      <h3 id="tpaso1"> Paso 1: Seleccionar dataset de testeo</h3>
+      <img src="img/testear_inicial.png" />
+      <blockquote>
+      <p>Nota: El dataset de testeo deberá tener el mismo formato que el dataset de entrenamiento.</p>
+
+      <u>Aclaración:</u> Esta nota es importante ya que de lo contrario no se consideran excepciones.
+      </blockquote>
+
+      <h3 id="tpaso2"> Paso 2: Seleccionar modelo generado previamente</h3>
+      <p>En el paso previo de Crear Modelo, se genera un modelo en formato <i>.data</i> del árbol de decisión, el cual es útil para realizar predicciones con el mismo.</p>
+      <p>Este archivo se almacena en el mismo directorio de la aplicación dentro del directorio <i>modelos</i> cuyo formato de nombre es "02-06-2019164434.data" que se corresponde con la fecha y hora del momento de generación del modelo.</p>
+      <img src="img/t_sel_modelo.png" />
+
+      <h3 id="tpaso3"> Paso 3: Seleccionar botón Testear Modelo</h3>
+      <img src="img/testear_resultado.png" />      
+      
+      
+      <hr>
+      <h2>Testear en un punto</h2>
+      <h3 id="tppaso1"> Paso 1: Seleccionar modelo generado previamente</h3>
+      <p>De la misma forma que Testear Modelo, se selecciona el modelo (archivo .data) que se quiere testear.</p>
+      <img src="img/testear_punto.png" />
+
+      <h3 id="tppaso2"> Paso 2: Seleccionar punto que se quiere predecir</h3>
+      <p>Seleccionar el punto X e Y que se quiere comprobar la clase predecida por el modelo.</p>
+      <img src="img/testear_punto_2.png" />
+    </div>
+
+
+  </div>
+</section>
+<section class="vibrant centered">
+  <div class="">
+    <h4> El template es autoría de Frittt Templates. </h4>
+  </div>
+</section>
+<footer>
+  <div class="">
+    <p> Cátedra: Inteligencia Artificial 2019 - Ingeniería en Sistemas de Información - UTN FRRe .</p>
+  </div>
+</footer>
+</div>
+<script src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/prettify/prettify.js"></script> 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
+</body>
+</html>

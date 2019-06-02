@@ -31,6 +31,9 @@ class MatplotlibWidget(QMainWindow):
         self.testear.clicked.connect(self.test)  # boton para disparar el testeo
         self.predecir.clicked.connect(self.predecir_punto)  # boton para disparar la prediccion de un punto
 
+        #Menubar
+        self.actionTutorial.triggered.connect(self.ver_tutorial) #para ver el tutorial
+
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
     def update_graph(self, dataset):
@@ -163,7 +166,15 @@ class MatplotlibWidget(QMainWindow):
 
     def verArbol(self):
         try:
-            os.startfile("arbol.pdf")
+            webbrowser.open('arbol.pdf', new=2)
+        except:
+            pass
+
+    def ver_tutorial(self): #para ver el tutorial
+        dirpath = os.getcwd()
+        path = 'file://'+ dirpath + '/tutorial/index.html'
+        try:
+            webbrowser.open(path, new=2)
         except:
             pass
 
