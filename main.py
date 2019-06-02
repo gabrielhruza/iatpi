@@ -10,6 +10,8 @@ from training import *
 from test import *
 
 import webbrowser
+import os
+
 
 class MatplotlibWidget(QMainWindow):
 
@@ -160,10 +162,10 @@ class MatplotlibWidget(QMainWindow):
         return
 
     def verArbol(self):
-
-        webbrowser.open('http://google.co.kr', new=2)
-
-        return
+        try:
+            os.startfile("arbol.pdf")
+        except:
+            pass
 
 
 app = QApplication([])

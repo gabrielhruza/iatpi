@@ -32,14 +32,13 @@ class Arbol(object):
 
         self.asignar_id()
 
-        f = Digraph(titulo, filename=filename, format="dot")
+        f = Digraph(titulo, filename=filename, format="pdf")
         f.attr(size=size)
         f.attr('node', shape='record', style='rounded')
         i = 0
         while i<len(self.arbol):
             self.arbol[i].graficar(f)
             i+=1
-        #f.view() C:\Program Files (x86)\Graphviz2.38\bin;C:\Program Files (x86)\Graphviz2.38\bin\dot.exe
         try:
             f.render()
         except:
