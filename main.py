@@ -79,17 +79,21 @@ class MatplotlibWidget(QMainWindow):
             self.ver_arbol.setEnabled(True)
 
 
-    # buscar archivo de modelo .DATA
+    # buscar archivo de modelo .DATA en "testear modelo"
     def buscar_modelo(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
+        dirpath = os.getcwd()
+        path = dirpath + "/modelos"
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", path , "DATA Files (*.data )")
 
         if fileName:
             self.input_file_model.setText(fileName)
 
 
-    # buscar archivo de modelo en "predecir punto"
+    # buscar archivo de modelo .DATA en "predecir punto"
     def buscar_modelo_punto(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", "", "DATA Files (*.data )")
+        dirpath = os.getcwd()
+        path = dirpath + "/modelos"
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione DATA", path, "DATA Files (*.data )")
 
         if fileName:
             self.input_file_model_punto.setText(fileName)
