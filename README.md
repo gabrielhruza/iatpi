@@ -6,9 +6,9 @@ El proyecto forma parte del Trabajo Integrador Final (TPI) de la cátedra INTELI
 "Arboles de Decision para Manejo de Atributos Continuos"
 
 Grupo Nº 3:
-	* GARCIA AKIYAMA, Jorge Horacio
-	* GRINBERG, David Emmanuel
-	* HRUZA, Gabriel Carlos
+* GARCIA AKIYAMA, Jorge Horacio
+* GRINBERG, David Emmanuel
+* HRUZA, Gabriel Carlos
 
 Objetivos:
 1. Implementar algoritmos de aŕbol de decisión para el manejo de atributos continuos.
