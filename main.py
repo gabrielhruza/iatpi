@@ -33,6 +33,7 @@ class MatplotlibWidget(QMainWindow):
 
         #Menubar
         self.actionTutorial.triggered.connect(self.ver_tutorial) #para ver el tutorial
+        self.actionFormato.triggered.connect(self.ver_formato)  # para ver el formato de entrada
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
@@ -64,7 +65,9 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo para training
     def buscar_archivo(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
+        dirpath = os.getcwd()
+        path = dirpath + "/datasets"
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", path, "CSV Files (*.csv )")
 
         if fileName:
             self.input_file.setText(fileName)
@@ -72,11 +75,19 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
-            self.ver_arbol.setDisabled(True)
-            dataset_path = self.input_file.text()
-            dataset = train(dataset_path)
-            self.update_graph(dataset)
-            self.ver_arbol.setEnabled(True)
+            try:
+                d = QDialog()
+                d.setFixedSize(200,50)
+                d.setWindowTitle('Por favor esperar ...')
+                d.show()
+                dataset_path = self.input_file.text()
+                dataset = train(dataset_path)
+                self.update_graph(dataset)
+                self.ver_arbol.setEnabled(True)
+            except:
+                print("Hubo un problema durante el procesamiento del dataset. Por favor revisar el formato de entrada como se indica en el Menu")
+
+
 
 
     # buscar archivo de modelo .DATA en "testear modelo"
@@ -101,7 +112,9 @@ class MatplotlibWidget(QMainWindow):
 
     # buscar archivo para testing
     def buscar_archivo_test(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", "", "CSV Files (*.csv )")
+        dirpath = os.getcwd()
+        path = dirpath + "/datasets"
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", path, "CSV Files (*.csv )")
 
         if fileName:
             self.input_file_test.setText(fileName)
@@ -176,7 +189,16 @@ class MatplotlibWidget(QMainWindow):
 
     def ver_tutorial(self): #para ver el tutorial
         dirpath = os.getcwd()
-        path = 'file://'+ dirpath + '/tutorial/index.html'
+        path = 'file://'+ dirpath + '/tutorial/ayuda/index.html'
+        try:
+            webbrowser.open(path, new=2)
+        except:
+            pass
+
+
+    def ver_formato(self): #para ver el formato de entrada de datasets
+        dirpath = os.getcwd()
+        path = 'file://'+ dirpath + '/tutorial/formato/index.html'
         try:
             webbrowser.open(path, new=2)
         except:

@@ -15,7 +15,7 @@ def plot_linea(n, min_y, max_y, min_x, max_x):
                 plt.plot([min_x, max_x], [nodo.umbral, nodo.umbral])
                 min_y = nodo.umbral
 
-
+#dibuja la linea para la clasificacion en el plot
 def plot_linea_rec(n, min_y, max_y, min_x, max_x):
 
     if not n.hoja:

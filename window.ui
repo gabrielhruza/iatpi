@@ -527,7 +527,14 @@
     <addaction name="separator"/>
     <addaction name="actionAcerca_de"/>
    </widget>
+   <widget class="QMenu" name="menuFormato_de_datasets">
+    <property name="title">
+     <string>Muy importante</string>
+    </property>
+    <addaction name="actionFormato"/>
+   </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuFormato_de_datasets"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -544,6 +551,11 @@
   <action name="actionAcerca_de">
    <property name="text">
     <string>Acerca de </string>
+   </property>
+  </action>
+  <action name="actionFormato">
+   <property name="text">
+    <string>Formato de datasets</string>
    </property>
   </action>
  </widget>
