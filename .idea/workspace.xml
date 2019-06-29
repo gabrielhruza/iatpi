@@ -3,15 +3,47 @@
   <component name="ChangeListManager">
     <list default="true" id="9e6696a1-d6d0-45f1-b71a-27da299d7cd1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbol.gv" beforeDir="false" afterPath="$PROJECT_DIR$/arbol.gv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbol.gv.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/arbol.gv.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/arbol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/condavid.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/condavid.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/condavid.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/dataset.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/dataset_example.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/prueba.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/prueba.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelos/18-05-2019201048.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelos/18-05-2019201533.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelos/18-05-2019212838.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelos/18-05-2019214756.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelos/18-05-2019215015.data" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/plotear.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotear.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/training.py" beforeDir="false" afterPath="$PROJECT_DIR$/training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/css/desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/css/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/1_pantalla_inicial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/2_selec_dataset_modelo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/3_crear_modelo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/4_ver_arbol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/5_arbol_generado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/data.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/download.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/t_1_testear.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/t_sel_modelo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/testear_inicial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/testear_modelo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/testear_punto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/testear_punto_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/testear_resultado.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/utn.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/img/utn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/js/desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/js/layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/js/prettify/desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial/js/prettify/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/window.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,12 +53,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1166">
-              <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+            <state relative-caret-position="76">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
+                <element signature="n#!!doc" />
                 <element signature="e#171#200#0" expanded="true" />
               </folding>
             </state>
@@ -34,10 +67,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/window.ui">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11132">
+              <caret line="506" column="22" selection-start-line="506" selection-start-column="22" selection-end-line="506" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="36" />
+            <state relative-caret-position="264">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -45,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="209" column="17" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+            <state relative-caret-position="33">
+              <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -58,19 +100,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasets/condavid.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/arbol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1540">
-              <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -78,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plotear.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+            <state relative-caret-position="198">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -106,6 +139,7 @@
       <find>partition</find>
       <find>pri</find>
       <find>162,</find>
+      <find>menu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,14 +160,14 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/plotear.py" />
         <option value="$PROJECT_DIR$/arbol.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/datasets/condavid.csv" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/training.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="8" />
     <option name="y" value="82" />
     <option name="width" value="1346" />
@@ -145,6 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -156,7 +191,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,7 +326,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.1235119" />
@@ -346,21 +380,9 @@
     <entry file="file://$PROJECT_DIR$/plotearç.py" />
     <entry file="file://$PROJECT_DIR$/pruebas_con_scikitlearn.py" />
     <entry file="file://$PROJECT_DIR$/datasets/dataset.csv" />
-    <entry file="file://$PROJECT_DIR$/tutoriales/arbol.dot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tutoriales/arbol.dot" />
     <entry file="file://$PROJECT_DIR$/fsm.gv" />
-    <entry file="file://$PROJECT_DIR$/arbol.gv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="15" lean-forward="true" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/arbol.gv" />
     <entry file="file://$PROJECT_DIR$/pydot.py" />
     <entry file="file://$PROJECT_DIR$/gui.py" />
     <entry file="file://$PROJECT_DIR$/mplwidget.py">
@@ -373,28 +395,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backup/gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="155" column="5" selection-start-line="155" selection-start-column="4" selection-end-line="155" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/window.ui">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/backup/gui.py" />
     <entry file="file://$PROJECT_DIR$/table.py" />
-    <entry file="file://$PROJECT_DIR$/datasets/prueba.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="4" selection-start-line="2" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/prueba.csv" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -402,30 +405,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/datasets/condavid.csv" />
+    <entry file="file://$PROJECT_DIR$/window.ui">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1166">
-          <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-          <folding>
-            <element signature="e#171#200#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="11132">
+          <caret line="506" column="22" selection-start-line="506" selection-start-column="22" selection-end-line="506" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plotear.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        <state relative-caret-position="264">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -434,24 +425,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/arbol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1540">
-          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasets/condavid.csv">
+    <entry file="file://$PROJECT_DIR$/plotear.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        <state relative-caret-position="198">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/training.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="209" column="17" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+        <state relative-caret-position="33">
+          <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="n#!!doc" />
+            <element signature="e#171#200#0" expanded="true" />
           </folding>
         </state>
       </provider>
