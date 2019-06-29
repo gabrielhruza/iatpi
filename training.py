@@ -131,7 +131,7 @@ def max_ganancia(dataset, atributo, max_gan):
     max_ganancia = 0
 
     # itero por cada elemento del dataset segun el atributo
-    for index, row in dataset.itertuples():
+    for index, row in dataset.iterrows():
         umbral_actual = row[atributo]
 
         particion = particionar(dataset, atributo, umbral_actual)
