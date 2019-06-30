@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 from arbol import *
 from plotear import *
@@ -56,21 +57,23 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
     # CASO GENERAL
 
     # calculo la maxima ganancia de informacion de x y de y(hago de cuenta que no hay repetidos por ahora)
-    umbral_y_ganancia_x = max_ganancia(dataset, "x", max_gan)
     umbral_y_ganancia_y = max_ganancia(dataset, "y", max_gan)
+    umbral_y_ganancia_x = max_ganancia(dataset, "x", max_gan)
 
-    if (umbral_y_ganancia_x[1] >= umbral_y_ganancia_y[1]): # comparo entre ganancias de "x" y de "y"
+    if (umbral_y_ganancia_y[1] >= umbral_y_ganancia_x[1]): # comparo entre ganancias de "x" y de "y"
 
-        atributo    = "x"
-        umbral      = umbral_y_ganancia_x[0]
-        resg_gan    = umbral_y_ganancia_x[1]
+        atributo    = "y"
+        umbral      = umbral_y_ganancia_y[0]
+        resg_gan    = umbral_y_ganancia_y[1]
 
     else:
-        atributo = "y"
-        umbral = umbral_y_ganancia_y[0]
-        resg_gan = umbral_y_ganancia_y[1]
+        atributo = "x"
+        umbral = umbral_y_ganancia_x[0]
+        resg_gan = umbral_y_ganancia_x[1]
 
     particion = particionar(dataset, atributo, umbral)
+
+    print(umbral)
 
     left_node   = Nodo()
     right_node  = Nodo()
@@ -126,23 +129,26 @@ def max_ganancia(dataset, atributo, max_gan):
     entropia_dataset = entropia(dataset)
     dataset = dataset.sort_values(by=[atributo])
 
-    fe = dataset.head(1)[atributo]
+    fe = dataset.head(1)[atributo] #fe = first element
 
     umbral_y_ganancia   = [fe.values[0], 0]
 
-    anterior = dataset.iloc[0][atributo]
+    #anterior = dataset.iloc[0][atributo]
+
+    valores = dataset[atributo].to_numpy()
+    valores = np.unique(valores)
+    anterior = valores[0]
+
     max_ganancia = 0
 
-
     # itero por cada elemento del dataset segun el atributo
-    #for row in dataset.itertuples():
+    for i in range(1,len(valores)):
 
-    for x in range(1,dataset.shape[0]):
+        #row = dataset.iloc[i]
+        #umbral_actual   = getattr(row, atributo)
 
-        row = dataset.iloc[x]
-
-        umbral_actual   = getattr(row, atributo)
-        medio = (anterior + umbral_actual) / 2
+        umbral_actual = valores[i]
+        medio = ( umbral_actual + anterior) / 2
         anterior = umbral_actual
 
         print(medio)

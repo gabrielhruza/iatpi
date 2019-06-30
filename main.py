@@ -86,9 +86,6 @@ class MatplotlibWidget(QMainWindow):
             self.ver_arbol.setEnabled(True)
 
 
-
-
-
     # buscar archivo de modelo .DATA en "testear modelo"
     def buscar_modelo(self):
         dirpath = os.getcwd()
