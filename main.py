@@ -75,17 +75,16 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
-            try:
-                d = QDialog()
-                d.setFixedSize(200,50)
-                d.setWindowTitle('Por favor esperar ...')
-                d.show()
-                dataset_path = self.input_file.text()
-                dataset = train(dataset_path)
-                self.update_graph(dataset)
-                self.ver_arbol.setEnabled(True)
-            except:
-                print("Hubo un problema durante el procesamiento del dataset. Por favor revisar el formato de entrada como se indica en el Menu")
+
+            d = QDialog()
+            d.setFixedSize(200,50)
+            d.setWindowTitle('Por favor esperar ...')
+            d.show()
+            dataset_path = self.input_file.text()
+            dataset = train(dataset_path)
+            self.update_graph(dataset)
+            self.ver_arbol.setEnabled(True)
+
 
 
 

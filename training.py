@@ -127,14 +127,27 @@ def max_ganancia(dataset, atributo, max_gan):
     dataset = dataset.sort_values(by=[atributo])
 
     fe = dataset.head(1)[atributo]
-    umbral_y_ganancia = [fe.values[0], 0]
+
+    umbral_y_ganancia   = [fe.values[0], 0]
+
+    anterior = dataset.iloc[0][atributo]
     max_ganancia = 0
 
-    # itero por cada elemento del dataset segun el atributo
-    for index, row in dataset.iterrows():
-        umbral_actual = row[atributo]
 
-        particion = particionar(dataset, atributo, umbral_actual)
+    # itero por cada elemento del dataset segun el atributo
+    #for row in dataset.itertuples():
+
+    for x in range(1,dataset.shape[0]):
+
+        row = dataset.iloc[x]
+
+        umbral_actual   = getattr(row, atributo)
+        medio = (anterior + umbral_actual) / 2
+        anterior = umbral_actual
+
+        print(medio)
+
+        particion = particionar(dataset, atributo, medio)
 
         # obtener la probabilidad de cada particion
         long_dataset = len(dataset.index)
@@ -159,7 +172,7 @@ def max_ganancia(dataset, atributo, max_gan):
             gain_ratio = ganancia / sp_info
 
         if gain_ratio > max_ganancia:
-            umbral_y_ganancia = [umbral_actual, gain_ratio]
+            umbral_y_ganancia = [medio, gain_ratio]
             max_ganancia = gain_ratio
 
     return umbral_y_ganancia
