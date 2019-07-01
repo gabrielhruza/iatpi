@@ -129,15 +129,14 @@ def max_ganancia(dataset, atributo, max_gan):
     entropia_dataset = entropia(dataset)
     dataset = dataset.sort_values(by=[atributo])
 
-    fe = dataset.head(1)[atributo] #fe = first element
-
-    umbral_y_ganancia   = [fe.values[0], 0]
-
-    #anterior = dataset.iloc[0][atributo]
+    #fe = dataset.head(1)[atributo] #fe = first element
+    #se = dataset.head(2)[atributo]  # se = second element
 
     valores = dataset[atributo].to_numpy()
     valores = np.unique(valores)
     anterior = valores[0]
+
+    umbral_y_ganancia = [anterior/2, 0]
 
     max_ganancia = 0
 
@@ -150,8 +149,6 @@ def max_ganancia(dataset, atributo, max_gan):
         umbral_actual = valores[i]
         medio = ( umbral_actual + anterior) / 2
         anterior = umbral_actual
-
-        print(medio)
 
         particion = particionar(dataset, atributo, medio)
 
