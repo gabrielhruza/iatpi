@@ -80,8 +80,9 @@ class MatplotlibWidget(QMainWindow):
             d.setFixedSize(200,50)
             d.setWindowTitle('Por favor esperar ...')
             d.show()
+            corte = int(self.corte.text())
             dataset_path = self.input_file.text()
-            dataset = train(dataset_path)
+            dataset = train(dataset_path, corte)
             self.update_graph(dataset)
             self.ver_arbol.setEnabled(True)
 
@@ -131,6 +132,17 @@ class MatplotlibWidget(QMainWindow):
 
             while (self.incorr_tableWidget.rowCount() > 0):
                     self.incorr_tableWidget.removeRow(0);
+
+            lenc = len(predicciones['correctos'])
+            leninc = len(predicciones['incorrectos'])
+
+            try:
+                print(100 - (leninc/lenc)*100)
+                pa = round(100 - (leninc / lenc) * 100, 2)
+                self.porc_acierto.setText('Porcentaje de Acierto: ' + str(pa) + ' %')
+            except:
+                print(0)
+                self.porc_acierto.setText('Porcentaje de Acierto: ' + str(pa) + ' %')
 
             rowPosition = self.corr_tableWidget.rowCount()  # añado cada item a la tabla correctos
             if len(predicciones['correctos']) > 0:

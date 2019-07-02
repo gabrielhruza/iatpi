@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -51,6 +51,20 @@
               <string>Ingresar parámetros</string>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Seleccione corte (%):</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="corte">
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QLineEdit" name="input_file">
                 <property name="enabled">
@@ -136,7 +150,7 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>Testear dataset</string>
+        <string>Testear</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -342,6 +356,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="porc_acierto">
+          <property name="text">
+           <string>Porcentaje de Acierto: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QWidget" name="graficos_widget" native="true"/>
         </item>
        </layout>
@@ -350,6 +371,7 @@
        <zorder>testear</zorder>
        <zorder>graficos_widget</zorder>
        <zorder>titulo_tabla</zorder>
+       <zorder>porc_acierto</zorder>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">

@@ -1,12 +1,14 @@
 import math
 import numpy as np
+import random
 
 from arbol import *
 from plotear import *
 
+import os
 
 # toma un dataset y devuelve el modelo (arbol)
-def train(dataset_path):
+def train(dataset_path, corte):
 
     df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'])
 
@@ -14,6 +16,14 @@ def train(dataset_path):
         return ""
 
     df = tratar_inicio(df, 'first')
+
+    dfs = corte_test(df, corte) #corte para dataset (dfs[0] = 1-corte long | dfs[1] = corte long
+
+    df = dfs[0]     #dataset para training
+    dftt = dfs[1]   #dataset para testing
+
+    if not dftt.empty:
+        dftt.to_csv(index=False) #almaceno dataset para training
 
     modelo=Arbol()
     nodo_resguardo = Nodo(id=0)
@@ -133,18 +143,18 @@ def max_ganancia(dataset, atributo, max_gan):
     #se = dataset.head(2)[atributo]  # se = second element
 
     valores = dataset[atributo].to_numpy()
+
+    umedio = (valores[0] + valores[1]) / 2
+
     valores = np.unique(valores)
     anterior = valores[0]
 
-    umbral_y_ganancia = [anterior/2, 0]
+    umbral_y_ganancia = [umedio + 0.5, 0]
 
     max_ganancia = 0
 
     # itero por cada elemento del dataset segun el atributo
     for i in range(1,len(valores)):
-
-        #row = dataset.iloc[i]
-        #umbral_actual   = getattr(row, atributo)
 
         umbral_actual = valores[i]
         medio = ( umbral_actual + anterior) / 2
@@ -240,3 +250,31 @@ def tratar_inicio(dataset, keep):
     return dataset
 
 
+def corte_test(dataset, corte):
+
+    dftr     = dataset
+    dftt     = dataset
+    valores  = []
+    longt   = dftr.shape[0]  #longitud total del dataset
+
+    if corte == 0:
+        return [dftr, dftt]
+    else:
+        longc   = int((longt*corte)/100) #obtengo la longitud a cortar
+
+    i = 0
+    while i<longc:
+        aleatorio = random.randint(0, longt)
+        valores.append(aleatorio)
+        i = i + 1
+
+    dftt = dftr[0:longc]
+    dftr = dftr[longc:longt]
+
+    dirpath = os.getcwd()
+    path = dirpath + 'corte.csv'
+
+    dftr.to_csv('train.csv', index=None, header=False)
+    dftt.to_csv('test.csv', index = None, header = False)
+
+    return [dftr, dftt]
