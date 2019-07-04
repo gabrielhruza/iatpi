@@ -139,6 +139,10 @@ class MatplotlibWidget(QMainWindow):
             try:
                 print(100 - (leninc/lenc)*100)
                 pa = round(100 - (leninc / lenc) * 100, 2)
+
+                if pa<0:
+                    pa=0
+
                 self.porc_acierto.setText('Porcentaje de Acierto: ' + str(pa) + ' %')
             except:
                 print(0)
