@@ -67,7 +67,7 @@ class MatplotlibWidget(QMainWindow):
     def buscar_archivo(self):
         dirpath = os.getcwd()
         path = dirpath + "/datasets"
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", path, "CSV Files (*.csv )")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione dataset", "", "CSV Files (*.csv );;Text Files (*.txt)")
 
         if fileName:
             self.input_file.setText(fileName)
@@ -111,7 +111,7 @@ class MatplotlibWidget(QMainWindow):
     def buscar_archivo_test(self):
         dirpath = os.getcwd()
         path = dirpath + "/datasets"
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione CSV", path, "CSV Files (*.csv )")
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione dataset", "", "CSV Files (*.csv );;Text Files (*.txt)")
 
         if fileName:
             self.input_file_test.setText(fileName)

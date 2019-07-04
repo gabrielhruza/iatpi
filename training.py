@@ -269,7 +269,6 @@ def corte_test(dataset, corte):
         i = i + 1
 
     dftr = dftr.iloc[np.random.permutation(len(dftr))]
-    #print(dftr)
 
     dftt = dftr[0:longc]
     dftr = dftr[longc:longt]
