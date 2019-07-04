@@ -8,16 +8,18 @@ from plotear import *
 import os
 
 # toma un dataset y devuelve el modelo (arbol)
-def train(dataset_path, corte):
+def train(dataset_path, opciones):
 
-    df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'])
+    df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'], decimal=opciones['decimal'])
+
+    print(df)
 
     if df.empty:
         return ""
 
     df = tratar_inicio(df, 'first')
 
-    dfs = corte_test(df, corte) #corte para dataset (dfs[0] = 1-corte long | dfs[1] = corte long
+    dfs = corte_test(df, opciones['corte']) #corte para dataset (dfs[0] = 1-corte long | dfs[1] = corte long
 
     df = dfs[0]     #dataset para training
     dftt = dfs[1]   #dataset para testing
@@ -82,8 +84,6 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
         resg_gan = umbral_y_ganancia_x[1]
 
     particion = particionar(dataset, atributo, umbral)
-
-    print(umbral)
 
     left_node   = Nodo()
     right_node  = Nodo()

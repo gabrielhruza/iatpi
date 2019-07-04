@@ -80,9 +80,30 @@ class MatplotlibWidget(QMainWindow):
             d.setFixedSize(200,50)
             d.setWindowTitle('Por favor esperar ...')
             d.show()
-            corte = int(self.corte.text())
+
+            corte       = int(self.corte.text())
+            separador   = self.separador.currentText()
+            decimal     = self.decimal.currentText()
+            clase1      = self.clase1.text()
+            clase2      = self.clase2.text()
+            ganancia    = self.ganancia.isChecked()
+            t_ganancia  = self.t_ganancia.isChecked()
+
+            opciones = {
+                "corte" : corte,
+                "separador" : separador,
+                "decimal"   : decimal,
+                "clase1"    : clase1,
+                "clase2"    : clase2,
+                "ganancia"  : ganancia,
+                "t_ganancia" : t_ganancia
+            }
+
+            print(opciones)
+
             dataset_path = self.input_file.text()
-            dataset = train(dataset_path, corte)
+
+            dataset = train(dataset_path, opciones)
             self.update_graph(dataset)
             self.ver_arbol.setEnabled(True)
 
@@ -156,14 +177,6 @@ class MatplotlibWidget(QMainWindow):
                     self.corr_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
                     self.corr_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
                     rowPosition += 1
-
-            #rowPosition = self.nopred_tableWidget.rowCount()  # añado cada item a la tabla incosistentes
-            #for row in predicciones['inciertos']:
-             #   self.nopred_tableWidget.insertRow(rowPosition)
-             #   self.nopred_tableWidget.setItem(rowPosition, 0, QTableWidgetItem(str(row['x'])))
-             #   self.nopred_tableWidget.setItem(rowPosition, 1, QTableWidgetItem(str(row['y'])))
-             #   self.nopred_tableWidget.setItem(rowPosition, 2, QTableWidgetItem(str(row['clase'])))
-             #   rowPosition += 1
 
             rowPosition = self.incorr_tableWidget.rowCount() # añado cada item a la tabla incorrectos
             for row in predicciones['incorrectos']:
