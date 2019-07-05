@@ -51,7 +51,7 @@ class MatplotlibWidget(QMainWindow):
             self.MplWidget.canvas.axes.set_xlabel('X')
             self.MplWidget.canvas.axes.set_ylabel('Y')
 
-        clases = dataset.clase.unique() # valores distintos de clases
+        clases = dataset.clase.unique() # obtengo los valores distintos de clases
         colors = np.where(dataset['clase'] == clases[0], 'b', 'k')  # clase 1 = azul // clase0 = negro
 
         x = dataset['x'].to_numpy()
@@ -76,33 +76,35 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
+            try:
+                corte       = int(self.corte.text())
+                separador   = self.separador.currentText()
+                decimal     = self.decimal.currentText()
+                ganancia    = self.ganancia.isChecked()
+                t_ganancia  = self.t_ganancia.isChecked()
+                encabezado  = self.encabezado.isChecked()
 
-            d = QDialog()
-            d.setFixedSize(200,50)
-            d.setWindowTitle('Por favor esperar ...')
-            d.show()
+                opciones = {
+                    "corte" : corte,
+                    "separador" : separador,
+                    "decimal"   : decimal,
+                    "ganancia"  : ganancia,
+                    "t_ganancia" : t_ganancia,
+                    "encabezado" : encabezado
+                }
 
-            corte       = int(self.corte.text())
-            separador   = self.separador.currentText()
-            decimal     = self.decimal.currentText()
-            ganancia    = self.ganancia.isChecked()
-            t_ganancia  = self.t_ganancia.isChecked()
-            encabezado  = self.encabezado.isChecked()
+                dataset_path = self.input_file.text()
 
-            opciones = {
-                "corte" : corte,
-                "separador" : separador,
-                "decimal"   : decimal,
-                "ganancia"  : ganancia,
-                "t_ganancia" : t_ganancia,
-                "encabezado" : encabezado
-            }
+                d = self.mensajeProgreso()
+                d.show()
 
-            dataset_path = self.input_file.text()
+                dataset = train(dataset_path, opciones)
 
-            dataset = train(dataset_path, opciones)
-            self.update_graph(dataset)
-            self.ver_arbol.setEnabled(True)
+                self.update_graph(dataset)
+                self.ver_arbol.setEnabled(True)
+            except:
+                d.hide()
+                self.messageError('Error', "Hubo un error con el formato de entrada del dataset.")
 
 
     # buscar archivo de modelo .DATA en "testear modelo"
@@ -163,8 +165,7 @@ class MatplotlibWidget(QMainWindow):
 
                 self.porc_acierto.setText('Porcentaje de Acierto: ' + str(pa) + ' %')
             except:
-                print(0)
-                self.porc_acierto.setText('Porcentaje de Acierto: ' + str(pa) + ' %')
+                self.porc_acierto.setText('Porcentaje de Acierto: ' + str(0) + ' %')
 
             rowPosition = self.corr_tableWidget.rowCount()  # añado cada item a la tabla correctos
             if len(predicciones['correctos']) > 0:
@@ -225,6 +226,15 @@ class MatplotlibWidget(QMainWindow):
             webbrowser.open(path, new=2)
         except:
             pass
+
+    def mensajeProgreso(self):
+        d = QDialog()
+        d.setFixedSize(200, 50)
+        d.setWindowTitle('Por favor esperar ...')
+        return  d
+
+    def messageError(self, titulo, mensaje):
+        QMessageBox.about(self, titulo, mensaje)
 
 
 app = QApplication([])
