@@ -10,11 +10,13 @@ import os
 # toma un dataset y devuelve el modelo (arbol)
 def train(dataset_path, opciones):
 
-    df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'], decimal=opciones['decimal'])
-
     if opciones['encabezado']:
-        df = df.drop(df.index[0])
-        print(df)
+        df = pd.read_csv(dataset_path, sep=opciones['separador'],
+                         decimal=opciones['decimal'])
+        df.columns = ["x", "y", "clase"]
+    else:
+        df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'],
+                         decimal=opciones['decimal'])
 
     if df.empty:
         return ""
@@ -153,7 +155,7 @@ def max_ganancia(dataset, atributo, max_gan):
     valores = np.unique(valores)
     anterior = valores[0]
 
-    umbral_y_ganancia = [umedio + 0.5, 0]
+    umbral_y_ganancia = [anterior/2, 0]
 
     max_ganancia = 0
 
