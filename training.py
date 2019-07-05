@@ -12,8 +12,6 @@ def train(dataset_path, opciones):
 
     df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'], decimal=opciones['decimal'])
 
-    print(df)
-
     if df.empty:
         return ""
 
@@ -91,6 +89,8 @@ def decision_tree(dataset, arbol, nodo_resguardo, max_gan):
     left_node.parent = nodo_resguardo
     right_node.parent = nodo_resguardo
 
+    print(umbral)
+    
     nodo_resguardo.umbral   = umbral
     nodo_resguardo.label    = atributo
     nodo_resguardo.ganancia = resg_gan

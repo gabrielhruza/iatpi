@@ -51,13 +51,14 @@ class MatplotlibWidget(QMainWindow):
             self.MplWidget.canvas.axes.set_xlabel('X')
             self.MplWidget.canvas.axes.set_ylabel('Y')
 
-        colors = np.where(dataset['clase'] == 1, 'b', 'k')  # clase 1 = azul // clase0 = negro
+        clases = dataset.clase.unique() # valores distintos de clases
+        colors = np.where(dataset['clase'] == clases[0], 'b', 'k')  # clase 1 = azul // clase0 = negro
 
         x = dataset['x'].to_numpy()
         y = dataset['y'].to_numpy()
 
         self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
-        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos - 1:AZUL - 0:NEGRO')
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos -'+ str(clases[0])+' :AZUL - '+ clases[1]+' :NEGRO')
 
         self.MplWidget.canvas.draw()
         plt.close()
@@ -84,8 +85,6 @@ class MatplotlibWidget(QMainWindow):
             corte       = int(self.corte.text())
             separador   = self.separador.currentText()
             decimal     = self.decimal.currentText()
-            clase1      = self.clase1.text()
-            clase2      = self.clase2.text()
             ganancia    = self.ganancia.isChecked()
             t_ganancia  = self.t_ganancia.isChecked()
 
@@ -93,8 +92,6 @@ class MatplotlibWidget(QMainWindow):
                 "corte" : corte,
                 "separador" : separador,
                 "decimal"   : decimal,
-                "clase1"    : clase1,
-                "clase2"    : clase2,
                 "ganancia"  : ganancia,
                 "t_ganancia" : t_ganancia
             }
