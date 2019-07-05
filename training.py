@@ -12,6 +12,10 @@ def train(dataset_path, opciones):
 
     df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'], decimal=opciones['decimal'])
 
+    if opciones['encabezado']:
+        df = df.drop(df.index[0])
+        print(df)
+
     if df.empty:
         return ""
 

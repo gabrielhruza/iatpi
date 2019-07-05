@@ -121,6 +121,29 @@
                   </widget>
                  </item>
                  <item>
+                  <widget class="QFrame" name="frame_5">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QCheckBox" name="encabezado">
+                    <property name="geometry">
+                     <rect>
+                      <x>50</x>
+                      <y>10</y>
+                      <width>141</width>
+                      <height>17</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Tiene encabezado?</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
                   <widget class="QFrame" name="frame_2">
                    <property name="maximumSize">
                     <size>

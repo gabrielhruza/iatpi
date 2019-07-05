@@ -87,16 +87,16 @@ class MatplotlibWidget(QMainWindow):
             decimal     = self.decimal.currentText()
             ganancia    = self.ganancia.isChecked()
             t_ganancia  = self.t_ganancia.isChecked()
+            encabezado  = self.encabezado.isChecked()
 
             opciones = {
                 "corte" : corte,
                 "separador" : separador,
                 "decimal"   : decimal,
                 "ganancia"  : ganancia,
-                "t_ganancia" : t_ganancia
+                "t_ganancia" : t_ganancia,
+                "encabezado" : encabezado
             }
-
-            print(opciones)
 
             dataset_path = self.input_file.text()
 
