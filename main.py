@@ -52,13 +52,23 @@ class MatplotlibWidget(QMainWindow):
             self.MplWidget.canvas.axes.set_ylabel('Y')
 
         clases = dataset.clase.unique() # obtengo los valores distintos de clases
-        colors = np.where(dataset['clase'] == clases[0], 'b', 'k')  # clase 1 = azul // clase0 = negro
+        colors = np.where(dataset['clase'] == clases[0], 'b', 'k')  # clase1 = azul // clase0 = negro
+
+        clase0 = clases[0]
+        leg1 = str(clase0) + ' :AZUL'
+
+        if len(clases) > 1:
+            clase1 = clases[1]
+            leg2 = str(clase1) + ' :NEGRO'
+        else:
+            leg2 = ""
+
 
         x = dataset['x'].to_numpy()
         y = dataset['y'].to_numpy()
 
         self.MplWidget.canvas.axes.scatter(x=x,y=y, c=colors, s=25)
-        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos -'+ str(clases[0])+' :AZUL - '+ clases[1]+' :NEGRO')
+        self.MplWidget.canvas.axes.set_title('C4.5 con atributos continuos -'+ leg1 + " - " + leg2)
 
         self.MplWidget.canvas.draw()
         plt.close()
@@ -76,35 +86,39 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
-            try:
-                corte       = int(self.corte.text())
-                separador   = self.separador.currentText()
-                decimal     = self.decimal.currentText()
-                ganancia    = self.ganancia.isChecked()
-                t_ganancia  = self.t_ganancia.isChecked()
-                encabezado  = self.encabezado.isChecked()
 
-                opciones = {
-                    "corte" : corte,
-                    "separador" : separador,
-                    "decimal"   : decimal,
-                    "ganancia"  : ganancia,
-                    "t_ganancia" : t_ganancia,
-                    "encabezado" : encabezado
-                }
+            corte       = int(self.corte.text())
+            separador   = self.separador.currentText()
+            decimal     = self.decimal.currentText()
+            ganancia    = self.ganancia.isChecked()
+            t_ganancia  = self.t_ganancia.isChecked()
+            encabezado  = self.encabezado.isChecked()
 
-                dataset_path = self.input_file.text()
+            opciones = {
+                "corte" : corte,
+                "separador" : separador,
+                "decimal"   : decimal,
+                "ganancia"  : ganancia,
+                "t_ganancia" : t_ganancia,
+                "encabezado" : encabezado
+            }
 
-                d = self.mensajeProgreso()
-                d.show()
+            dataset_path = self.input_file.text()
 
-                dataset = train(dataset_path, opciones)
+            d = self.mensajeProgreso()
+            d.show()
 
-                self.update_graph(dataset)
-                self.ver_arbol.setEnabled(True)
-            except:
-                d.hide()
-                self.messageError('Error', "Hubo un error con el formato de entrada del dataset.")
+            dataset = train(dataset_path, opciones)
+
+            self.update_graph(dataset)
+            self.ver_arbol.setEnabled(True)
+            d.destroy()
+
+            #except Exception as e:
+             #   d.hide()
+                #mensaje = "Hubo un error con el formato de entrada del dataset."
+              #  mensaje = str(e)
+              #  self.messageError('Error', mensaje)
 
 
     # buscar archivo de modelo .DATA en "testear modelo"
@@ -231,6 +245,7 @@ class MatplotlibWidget(QMainWindow):
         d = QDialog()
         d.setFixedSize(200, 50)
         d.setWindowTitle('Por favor esperar ...')
+
         return  d
 
     def messageError(self, titulo, mensaje):

@@ -11,12 +11,10 @@ import os
 def train(dataset_path, opciones):
 
     if opciones['encabezado']:
-        df = pd.read_csv(dataset_path, sep=opciones['separador'],
-                         decimal=opciones['decimal'])
+        df = pd.read_csv(dataset_path, sep=opciones['separador'])
         df.columns = ["x", "y", "clase"]
     else:
-        df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'],
-                         decimal=opciones['decimal'])
+        df = pd.read_csv(dataset_path, names=['x', 'y', 'clase'], sep=opciones['separador'])
 
     if df.empty:
         return ""
