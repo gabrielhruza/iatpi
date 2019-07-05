@@ -86,39 +86,39 @@ class MatplotlibWidget(QMainWindow):
     # disparar el proceso de entrenamiento
     def procesar_dataset(self):
         if self.input_file.text():
+            try:
+                corte       = int(self.corte.text())
+                separador   = self.separador.currentText()
+                decimal     = self.decimal.currentText()
+                ganancia    = self.ganancia.isChecked()
+                t_ganancia  = self.t_ganancia.isChecked()
+                encabezado  = self.encabezado.isChecked()
 
-            corte       = int(self.corte.text())
-            separador   = self.separador.currentText()
-            decimal     = self.decimal.currentText()
-            ganancia    = self.ganancia.isChecked()
-            t_ganancia  = self.t_ganancia.isChecked()
-            encabezado  = self.encabezado.isChecked()
+                opciones = {
+                    "corte" : corte,
+                    "separador" : separador,
+                    "decimal"   : decimal,
+                    "ganancia"  : ganancia,
+                    "t_ganancia" : t_ganancia,
+                    "encabezado" : encabezado
+                }
 
-            opciones = {
-                "corte" : corte,
-                "separador" : separador,
-                "decimal"   : decimal,
-                "ganancia"  : ganancia,
-                "t_ganancia" : t_ganancia,
-                "encabezado" : encabezado
-            }
+                dataset_path = self.input_file.text()
 
-            dataset_path = self.input_file.text()
+                d = self.mensajeProgreso()
+                d.show()
 
-            d = self.mensajeProgreso()
-            d.show()
+                dataset = train(dataset_path, opciones)
 
-            dataset = train(dataset_path, opciones)
+                self.update_graph(dataset)
+                self.ver_arbol.setEnabled(True)
+                d.destroy()
 
-            self.update_graph(dataset)
-            self.ver_arbol.setEnabled(True)
-            d.destroy()
-
-            #except Exception as e:
-             #   d.hide()
-                #mensaje = "Hubo un error con el formato de entrada del dataset."
-              #  mensaje = str(e)
-              #  self.messageError('Error', mensaje)
+            except Exception as e:
+                d.hide()
+                mensaje = "Hubo un error con el formato de entrada del dataset."
+                #mensaje = str(e)
+                self.messageError('Error', mensaje)
 
 
     # buscar archivo de modelo .DATA en "testear modelo"
