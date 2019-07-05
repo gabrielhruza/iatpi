@@ -171,8 +171,7 @@ class MatplotlibWidget(QMainWindow):
             leninc = len(predicciones['incorrectos'])
 
             try:
-                print(100 - (leninc/lenc)*100)
-                pa = round(100 - (leninc / lenc) * 100, 2)
+                pa = round((lenc / (lenc + leninc)) * 100, 2)
 
                 if pa<0:
                     pa=0
