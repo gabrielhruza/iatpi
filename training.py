@@ -277,9 +277,13 @@ def corte_test(dataset, corte):
     dftr = dftr[longc:longt]
 
     dirpath = os.getcwd()
-    path = dirpath + 'corte.csv'
+    path = dirpath
 
-    dftr.to_csv('train.csv', index=None, header=False)
-    dftt.to_csv('test.csv', index = None, header = False)
+    train = time.strftime("%d-%m-%Y%H%M%S") + "_train.csv"
+    test = time.strftime("%d-%m-%Y%H%M%S") + "_test.csv"
+
+
+    dftr.to_csv(dirpath + '/modelos/' + train, index=None, header=False)
+    dftt.to_csv(dirpath + '/modelos/' + test, index = None, header = False)
 
     return [dftr, dftt]

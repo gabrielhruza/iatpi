@@ -120,7 +120,7 @@ class MatplotlibWidget(QMainWindow):
                     mensaje = mensaje + " Encabezado \n"
 
                 mensaje = mensaje + "[Real " + separador + " Real " + separador + " Clase]"
-                #mensaje = str(e)
+                mensaje = mensaje + str(e)
                 self.messageError('Error', mensaje)
 
 
@@ -147,8 +147,8 @@ class MatplotlibWidget(QMainWindow):
     # buscar archivo para testing
     def buscar_archivo_test(self):
         dirpath = os.getcwd()
-        path = dirpath + "/datasets"
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione dataset", "", "CSV Files (*.csv );;Text Files (*.txt)")
+        path = dirpath + "/modelos"
+        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Seleccione dataset", path, "CSV Files (*.csv );;Text Files (*.txt)")
 
         if fileName:
             self.input_file_test.setText(fileName)
