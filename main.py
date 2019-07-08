@@ -239,11 +239,11 @@ class MatplotlibWidget(QMainWindow):
             pass
 
     def mensajeProgreso(self):
+
         d = QDialog()
-        d.setFixedSize(200, 50)
-        d.setWindowTitle('Por favor esperar ...')
-        #layout = QVBoxLayout()
-        #d.setLayout(layout)
+        d.setWindowTitle("Procesando")
+        d.setFixedSize(200, 100)
+
         return  d
 
     def messageError(self, titulo, mensaje):
