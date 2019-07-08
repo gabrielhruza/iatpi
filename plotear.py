@@ -46,10 +46,10 @@ def plot_linea_rec(n, min_y, max_y, min_x, max_x):
 
 def plotear(dataset, arbol, titulo):
 
-    max_x = dataset["x"].max()
-    min_x = dataset["x"].min()
-    max_y = dataset["y"].max()
-    min_y = dataset["y"].min()
+    max_x = dataset["x"].max() + 1
+    min_x = dataset["x"].min() - 1
+    max_y = dataset["y"].max() + 1
+    min_y = dataset["y"].min() - 1
 
     n = arbol.raiz()
     plot_linea_rec(n, min_y, max_y, min_x, max_x)
