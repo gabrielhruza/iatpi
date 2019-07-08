@@ -113,8 +113,13 @@ class MatplotlibWidget(QMainWindow):
                 d.destroy()
 
             except Exception as e:
-                #d.hide()
-                mensaje = "Hubo un error con el formato de entrada del dataset."
+
+                mensaje = "Hubo un error con el formato de entrada del dataset. Se esperaba: \n"
+
+                if encabezado:
+                    mensaje = mensaje + " Encabezado \n"
+
+                mensaje = mensaje + "[Real " + separador + " Real " + separador + " Clase]"
                 #mensaje = str(e)
                 self.messageError('Error', mensaje)
 
