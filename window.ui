@@ -51,7 +51,7 @@
               <string>Ingresar parámetros</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_7">
-              <item>
+              <item alignment="Qt::AlignLeft">
                <widget class="QFrame" name="frame_3">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -64,7 +64,7 @@
                   <widget class="QFrame" name="frame_6">
                    <property name="maximumSize">
                     <size>
-                     <width>300</width>
+                     <width>200</width>
                      <height>16777215</height>
                     </size>
                    </property>
@@ -74,9 +74,15 @@
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <layout class="QHBoxLayout" name="horizontalLayout_11">
                     <item>
                      <widget class="QLabel" name="label_2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>Separador:</string>
                       </property>
@@ -84,6 +90,12 @@
                     </item>
                     <item>
                      <widget class="QComboBox" name="separador">
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <item>
                        <property name="text">
                         <string>,</string>
@@ -96,25 +108,23 @@
                       </item>
                      </widget>
                     </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_2">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_14">
                     <item>
-                     <widget class="QLabel" name="label_3">
+                     <widget class="QCheckBox" name="encabezado">
                       <property name="text">
-                       <string>Decimal:</string>
+                       <string>¿Tiene encabezado?</string>
                       </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QComboBox" name="decimal">
-                      <item>
-                       <property name="text">
-                        <string>.</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string>,</string>
-                       </property>
-                      </item>
                      </widget>
                     </item>
                    </layout>
@@ -122,29 +132,6 @@
                  </item>
                  <item>
                   <widget class="QFrame" name="frame_5">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <widget class="QCheckBox" name="encabezado">
-                    <property name="geometry">
-                     <rect>
-                      <x>50</x>
-                      <y>10</y>
-                      <width>141</width>
-                      <height>17</height>
-                     </rect>
-                    </property>
-                    <property name="text">
-                     <string>Tiene encabezado?</string>
-                    </property>
-                   </widget>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_2">
                    <property name="maximumSize">
                     <size>
                      <width>300</width>
@@ -159,16 +146,22 @@
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_2">
                     <item>
-                     <widget class="QRadioButton" name="ganancia">
+                     <widget class="QLabel" name="label">
+                      <property name="maximumSize">
+                       <size>
+                        <width>200</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="text">
-                       <string>Ganancia</string>
+                       <string>(%) para test:</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="t_ganancia">
-                      <property name="text">
-                       <string>Tasa de Ganancia</string>
+                     <widget class="QSpinBox" name="corte">
+                      <property name="maximum">
+                       <number>100</number>
                       </property>
                      </widget>
                     </item>
@@ -187,26 +180,6 @@
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_13">
-                 <item>
-                  <widget class="QLabel" name="label">
-                   <property name="maximumSize">
-                    <size>
-                     <width>200</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>(%) para test:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QSpinBox" name="corte">
-                   <property name="maximum">
-                    <number>100</number>
-                   </property>
-                  </widget>
-                 </item>
                  <item>
                   <widget class="QLineEdit" name="input_file">
                    <property name="enabled">
@@ -677,6 +650,7 @@
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -700,17 +674,9 @@
     <addaction name="separator"/>
     <addaction name="actionAcerca_de"/>
    </widget>
-   <widget class="QMenu" name="menuFormato_de_datasets">
-    <property name="title">
-     <string>Muy importante</string>
-    </property>
-    <addaction name="actionFormato"/>
-   </widget>
    <addaction name="menuArchivo"/>
-   <addaction name="menuFormato_de_datasets"/>
    <addaction name="menuAyuda"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSalir">
    <property name="text">
     <string>Salir</string>

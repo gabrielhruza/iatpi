@@ -37,6 +37,10 @@ class MatplotlibWidget(QMainWindow):
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
+        #ToolTips
+        tip_corte = "Seleccionar porcentaje para test y trainning. P.ej: Si selecciona 30%, sería 70% trainning y 30% test."
+        self.corte.setToolTip(tip_corte)
+
     def update_graph(self, dataset):
 
         if dataset.empty:
@@ -89,17 +93,11 @@ class MatplotlibWidget(QMainWindow):
             try:
                 corte       = int(self.corte.text())
                 separador   = self.separador.currentText()
-                decimal     = self.decimal.currentText()
-                ganancia    = self.ganancia.isChecked()
-                t_ganancia  = self.t_ganancia.isChecked()
                 encabezado  = self.encabezado.isChecked()
 
                 opciones = {
                     "corte" : corte,
                     "separador" : separador,
-                    "decimal"   : decimal,
-                    "ganancia"  : ganancia,
-                    "t_ganancia" : t_ganancia,
                     "encabezado" : encabezado
                 }
 
@@ -115,7 +113,7 @@ class MatplotlibWidget(QMainWindow):
                 d.destroy()
 
             except Exception as e:
-                d.hide()
+                #d.hide()
                 mensaje = "Hubo un error con el formato de entrada del dataset."
                 #mensaje = str(e)
                 self.messageError('Error', mensaje)
