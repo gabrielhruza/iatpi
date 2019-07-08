@@ -242,7 +242,8 @@ class MatplotlibWidget(QMainWindow):
         d = QDialog()
         d.setFixedSize(200, 50)
         d.setWindowTitle('Por favor esperar ...')
-
+        #layout = QVBoxLayout()
+        #d.setLayout(layout)
         return  d
 
     def messageError(self, titulo, mensaje):

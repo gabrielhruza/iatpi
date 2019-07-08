@@ -143,9 +143,6 @@ def max_ganancia(dataset, atributo, max_gan):
     entropia_dataset = entropia(dataset)
     dataset = dataset.sort_values(by=[atributo])
 
-    #fe = dataset.head(1)[atributo] #fe = first element
-    #se = dataset.head(2)[atributo]  # se = second element
-
     valores = dataset[atributo].to_numpy()
 
     umedio = (valores[0] + valores[1]) / 2
@@ -153,7 +150,7 @@ def max_ganancia(dataset, atributo, max_gan):
     valores = np.unique(valores)
     anterior = valores[0]
 
-    umbral_y_ganancia = [anterior/2, 0]
+    umbral_y_ganancia = [umedio, 0]
 
     max_ganancia = 0
 
@@ -188,7 +185,7 @@ def max_ganancia(dataset, atributo, max_gan):
         else:
             gain_ratio = ganancia / sp_info
 
-        if gain_ratio > max_ganancia:
+        if gain_ratio >= max_ganancia:
             umbral_y_ganancia = [medio, gain_ratio]
             max_ganancia = gain_ratio
 
@@ -218,6 +215,8 @@ def split_info(long_parte_1, long_parte_2, long_dataset):
 # tomo un dataset y lo particiono en 2 segun el umbral => retorno particiones[[p1], [p2]]
 def particionar(dataset, atributo, umbral):
     particion = [[], []]
+
+    print(umbral)
 
     particion[0] = dataset[dataset[atributo] <= umbral]
     particion[1] = dataset[dataset[atributo] > umbral]
