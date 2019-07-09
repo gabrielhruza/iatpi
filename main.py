@@ -50,17 +50,17 @@ class MatplotlibWidget(QMainWindow):
         self.help_test_punto.setPixmap(pixmap)
 
         #ToolTips
-        tip_corte = "Seleccionar porcentaje para test y trainning. \nP.ej: Si selecciona 30%, sería 70% trainning y 30% test."
+        tip_corte = "Seleccionar porcentaje para test y trainning. \nP.ej: Si selecciona 30%, sería 70% para trainning y 30% para test, \nlos cuales podrá utilizar en el paso de Test."
         self.help_corte.setToolTip(tip_corte)
 
-        tip_test_dataset = "Los nombres de archivos se corresponden \ncon la fecha y hora en que se creó el modelo."
+        tip_test_dataset = "Los nombres de archivos se corresponden \ncon la fecha y hora en que se creó el modelo. \nxxx_train es para validar el desarrollo debería dar 100% acierto \nxxx_test es para validar el modelo con datos no conocidos."
         self.help_test_dataset.setToolTip(tip_test_dataset)
 
         tip_test_modelo = "El modelo generado es un archivo .data \nel cual se nombra según la fecha y hora en que se creó el modelo"
         self.help_test_modelo.setToolTip(tip_test_modelo)
 
         tip_test_punto = "El modelo generado es un archivo .data \nel cual se nombra según la fecha y hora en que se creó el modelo"
-        self.help_test_modelo.setToolTip(tip_test_punto)
+        self.help_test_punto.setToolTip(tip_test_punto)
 
     def update_graph(self, dataset):
 

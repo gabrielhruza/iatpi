@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -580,6 +580,16 @@
                   <widget class="QPushButton" name="examinar_pred_punto">
                    <property name="text">
                     <string>Examinar</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="help_test_punto">
+                   <property name="cursor">
+                    <cursorShape>WhatsThisCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
                  </item>
