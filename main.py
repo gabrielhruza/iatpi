@@ -91,6 +91,7 @@ class MatplotlibWidget(QMainWindow):
     def procesar_dataset(self):
         if self.input_file.text():
             try:
+
                 corte       = int(self.corte.text())
                 separador   = self.separador.currentText()
                 encabezado  = self.encabezado.isChecked()
@@ -101,16 +102,14 @@ class MatplotlibWidget(QMainWindow):
                     "encabezado" : encabezado
                 }
 
-                dataset_path = self.input_file.text()
-
                 d = self.mensajeProgreso()
                 d.show()
 
+                dataset_path = self.input_file.text()
                 dataset = train(dataset_path, opciones)
 
                 self.update_graph(dataset)
                 self.ver_arbol.setEnabled(True)
-                d.destroy()
 
             except Exception as e:
 
@@ -120,7 +119,7 @@ class MatplotlibWidget(QMainWindow):
                     mensaje = mensaje + " Encabezado \n"
 
                 mensaje = mensaje + "[Real " + separador + " Real " + separador + " Clase]"
-                #mensaje = mensaje + str(e)
+                mensaje = mensaje + str(e)
                 self.messageError('Error', mensaje)
 
 
@@ -247,9 +246,9 @@ class MatplotlibWidget(QMainWindow):
 
         d = QDialog()
         d.setWindowTitle("Procesando")
-        d.setFixedSize(200, 100)
+        d.setFixedSize(200,100)
 
-        return  d
+        return d
 
     def messageError(self, titulo, mensaje):
         QMessageBox.about(self, titulo, mensaje)
