@@ -21,13 +21,13 @@ def train(dataset_path, opciones):
 
     df = tratar_inicio(df, 'first')
 
-    dfs = corte_test(df, opciones['corte']) #corte para dataset (dfs[0] = 1-corte long | dfs[1] = corte long
+    if opciones['corte'] > 0:
+        dfs = corte_test(df, opciones['corte']) #corte para dataset (dfs[0] = 1-corte long | dfs[1] = corte long
+        df = dfs[0]     #dataset para training
+        dftt = dfs[1]   #dataset para testing
 
-    df = dfs[0]     #dataset para training
-    dftt = dfs[1]   #dataset para testing
-
-    if not dftt.empty:
-        dftt.to_csv(index=False) #almaceno dataset para training
+    #if not dftt.empty:
+     #   dftt.to_csv(index=False) #almaceno dataset para training
 
     modelo=Arbol()
     nodo_resguardo = Nodo(id=0)
