@@ -31,9 +31,12 @@ class MatplotlibWidget(QMainWindow):
         self.testear.clicked.connect(self.test)  # boton para disparar el testeo
         self.predecir.clicked.connect(self.predecir_punto)  # boton para disparar la prediccion de un punto
 
+
         #Menubar
         self.actionTutorial.triggered.connect(self.ver_tutorial) #para ver el tutorial
-        self.actionFormato.triggered.connect(self.ver_formato)  # para ver el formato de entrada
+        #self.actionFormato.triggered.connect(self.ver_formato)  # para ver el formato de entrada
+        self.actionAcerca_de.triggered.connect(self.ver_acerca)  # para ver acerca de...
+        self.actionSalir.triggered.connect(self.close)  # para Salir de la aplicacion
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
@@ -241,6 +244,15 @@ class MatplotlibWidget(QMainWindow):
             webbrowser.open(path, new=2)
         except:
             pass
+
+    def ver_acerca(self): #para ver el acerca de ...
+        dirpath = os.getcwd()
+        path = 'file://'+ dirpath + '/tutorial/ayuda/index.html#bienvenido'
+        try:
+            webbrowser.open(path, new=2)
+        except:
+            pass
+
 
     def mensajeProgreso(self):
 
