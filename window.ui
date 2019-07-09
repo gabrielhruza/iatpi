@@ -26,7 +26,7 @@
        <enum>Qt::WheelFocus</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -168,6 +168,16 @@
                      <widget class="QSpinBox" name="corte">
                       <property name="maximum">
                        <number>100</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="help_corte">
+                      <property name="cursor">
+                       <cursorShape>WhatsThisCursor</cursorShape>
+                      </property>
+                      <property name="text">
+                       <string/>
                       </property>
                      </widget>
                     </item>
@@ -319,6 +329,16 @@
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QLabel" name="help_test_dataset">
+                <property name="cursor">
+                 <cursorShape>WhatsThisCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
@@ -349,6 +369,16 @@
                <widget class="QPushButton" name="examinar_modelo">
                 <property name="text">
                  <string>Examinar</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="help_test_modelo">
+                <property name="cursor">
+                 <cursorShape>WhatsThisCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>

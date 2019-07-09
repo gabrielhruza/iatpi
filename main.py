@@ -1,6 +1,7 @@
 # ------------------------------------------------------
 # ---------------------- main.py -----------------------
 # ------------------------------------------------------
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
@@ -40,9 +41,26 @@ class MatplotlibWidget(QMainWindow):
 
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
 
+
+        #Help Icons
+        pixmap = QPixmap('help.png')
+        self.help_corte.setPixmap(pixmap)
+        self.help_test_dataset.setPixmap(pixmap)
+        self.help_test_modelo.setPixmap(pixmap)
+        self.help_test_punto.setPixmap(pixmap)
+
         #ToolTips
-        tip_corte = "Seleccionar porcentaje para test y trainning. P.ej: Si selecciona 30%, sería 70% trainning y 30% test."
-        self.corte.setToolTip(tip_corte)
+        tip_corte = "Seleccionar porcentaje para test y trainning. \nP.ej: Si selecciona 30%, sería 70% trainning y 30% test."
+        self.help_corte.setToolTip(tip_corte)
+
+        tip_test_dataset = "Los nombres de archivos se corresponden \ncon la fecha y hora en que se creó el modelo."
+        self.help_test_dataset.setToolTip(tip_test_dataset)
+
+        tip_test_modelo = "El modelo generado es un archivo .data \nel cual se nombra según la fecha y hora en que se creó el modelo"
+        self.help_test_modelo.setToolTip(tip_test_modelo)
+
+        tip_test_punto = "El modelo generado es un archivo .data \nel cual se nombra según la fecha y hora en que se creó el modelo"
+        self.help_test_modelo.setToolTip(tip_test_punto)
 
     def update_graph(self, dataset):
 
